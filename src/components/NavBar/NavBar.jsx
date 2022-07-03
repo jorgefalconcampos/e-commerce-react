@@ -1,40 +1,40 @@
-import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
-import CartWidget from './CartWidget';
+import Container from "react-bootstrap/Container";
+import Nav from "react-bootstrap/Nav";
+import Navbar from "react-bootstrap/Navbar";
+import CartWidget from "./CartWidget";
+import { BoxSeam } from "react-bootstrap-icons";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 
 const NavBar = () => {
   return (
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
       <Container>
-        <Navbar.Brand href="#home">Mi tienda</Navbar.Brand>
+        <Navbar.Brand href="#home">
+          <BoxSeam color="white" size={60} className="px-2" />
+          React Bootstrap
+        </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
-          <Nav className="me-auto">
-            <Nav.Link href="#features">Items</Nav.Link>
-            <Nav.Link href="#pricing">Precios</Nav.Link>
-            {/* <NavDropdown title="Dropdown" id="collasible-nav-dropdown">
-              <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">
-                Another action
-              </NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="#action/3.4">
-                Separated link
-              </NavDropdown.Item>
-            </NavDropdown> */}
-          </Nav>
-          {/* <Nav>
-            <Nav.Link href="#deets">More deets</Nav.Link>
-            <Nav.Link eventKey={2} href="#memes">
-              Dank memes
-            </Nav.Link>
-          </Nav> */}
+          <Container fluid>
+            <Row>
+              <Col className="text-center">
+                <Nav className="me-auto">
+                  <Nav.Link href="#features">Items</Nav.Link>
+                  <Nav.Link href="#pricing">Precios</Nav.Link>
+                </Nav>
+              </Col>
+              <Col lg="auto" className="text-center">
+                <Nav class="me-auto">
+                  <Nav.Link href="#deets">
+                    <CartWidget />
+                  </Nav.Link>
+                </Nav>
+              </Col>
+            </Row>
+          </Container>
         </Navbar.Collapse>
       </Container>
-      <CartWidget/>
-
     </Navbar>
   );
 };

@@ -1,10 +1,13 @@
-import logo from "../../images/cart.png"
+import { Cart } from 'react-bootstrap-icons';
+import Badge from 'react-bootstrap/Badge';
 
-const CartWidget = () => {
+const CartWidget = ({items}) => {
     return (
-        <div className="w-15">
-            <img src={logo} alt="" className="w-25" aria-label="Carrito de compras" />
-        </div>
+        <>
+        <Badge pill bg="primary" className="mx-1">2</Badge>
+        <span className="visually-hidden">items en carrito</span> {/* a11y */}
+        <Cart className="" color="white" size={30}/>
+        </>
     )
 }
 
