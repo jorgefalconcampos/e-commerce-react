@@ -3,8 +3,8 @@ import { useState } from 'react'
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 // componentes
 import NavBar from "./components/NavBar/NavBar"
-// import Contenedor from "./components/Contenedor/Contenedor"
-// import ComponenteClase from "./ComponenteClase"
+// import Formulario from "./components/Formulario/Formulario"
+import CartDetail from './components/Cart/CartDetail/CartDetail'
 import ItemListContainer from "./components/ItemListContainer/ItemListContainer"
 // estilos
 import "./App.css"
@@ -17,7 +17,8 @@ function App() {
         <NavBar/>
            <Routes>
             <Route path="/" element={<ItemListContainer/>} />
-            {/* <Route path="/form" element={<Formulario input = { Input }></Formulario>} /> */}
+            <Route path="/cart" element={<CartDetail/>} />
+            {/* <Route path="/contact" element={<Formulario input = { Input }></Formulario>} /> */}
           </Routes>      
     </BrowserRouter>
     
