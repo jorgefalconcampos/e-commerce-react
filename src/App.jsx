@@ -16,8 +16,8 @@ function App() {
      <BrowserRouter>
         <NavBar/>
            <Routes>
-            <Route path="/" element={<ItemListContainer saludo={"Hola, saludos!"}/>} />
-            <Route path="/form" element={<Formulario input = { Input }></Formulario>} />
+            <Route path="/" element={<ItemListContainer/>} />
+            {/* <Route path="/form" element={<Formulario input = { Input }></Formulario>} /> */}
           </Routes>      
     </BrowserRouter>
     
