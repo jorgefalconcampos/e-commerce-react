@@ -6,22 +6,33 @@ import Card from "react-bootstrap/Card";
 import ListGroup from "react-bootstrap/ListGroup";
 import Badge from "react-bootstrap/Badge";
 import Button from "react-bootstrap/Button";
+import CartItemDetail from "./CartItemDetail";
 
 const CartDetail = () => {
   return (
-    <Container fluid className="bg-primary p-3">
-      <Row className="m-3 bg-danger d-flex justify-content-center">
+    <Container fluid className="p-3">
+      <Row className="m-4 px-2  d-flex justify-content-center rounded">
         {/* <Col className="text-center py-5 my-5">
           <h1>Aún no hay artículos en tu carrito.</h1>
         </Col> */}
 
-        <Col sm={9} className="bg-success">
+        
+        {/* detalle de artículos */}
+        <Col sm={11} md={9} className="">
           <section id="products_section">
-            <h1>sa</h1>
+              <h1 className="pt-2"> Tu carrito de compras</h1>
+              <hr></hr>
+
+              <CartItemDetail>
+
+              </CartItemDetail>
+
+              
           </section>
         </Col>
 
-        <Col sm={3} className="bg-info text-center">
+        {/* resumen */}
+        <Col sm={11} md={3} className="text-center">
           <section id="summary_section">
             <Card className="text-center my-3">
               <Card.Header>
