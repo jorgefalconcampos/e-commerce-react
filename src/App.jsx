@@ -1,8 +1,9 @@
 // librerías/dependencias
 import { useState } from 'react'
-import { BrowserRouter, Routes, Route } from "react-router-dom"
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom"
 // componentes
 import NavBar from "./components/NavBar/NavBar"
+import Home from "./components/Home/Home"
 // import Formulario from "./components/Formulario/Formulario"
 import CartDetail from './components/Cart/CartDetail/CartDetail'
 import ItemListContainer from "./components/ItemListContainer/ItemListContainer"
@@ -16,7 +17,9 @@ function App() {
      <BrowserRouter>
         <NavBar/>
            <Routes>
-            <Route path="/" element={<ItemListContainer/>} />
+            {/* Illustration by <a href="https://icons8.com/illustrations/author/N3YOxdn12Kox">Marina Mogulska</a> from <a href="https://icons8.com/illustrations">Ouch!</a> */}
+            <Route path="/" element={<Home/>} />
+            <Route path="/products" element={<ItemListContainer/>} />
             <Route path="/cart" element={<CartDetail/>} />
             {/* <Route path="/contact" element={<Formulario input = { Input }></Formulario>} /> */}
           </Routes>      

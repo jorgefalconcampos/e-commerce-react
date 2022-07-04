@@ -30,17 +30,18 @@ const NavBar = () => {
               <Col className="text-center">
                 <Nav className="me-auto">
                   <Link to="/" style={linkStyle}>
-                    <Nav.Link href="#features">Items</Nav.Link>
+                    <Nav.Link href="#home">Inicio</Nav.Link>
                   </Link>
-                  <Link to="/cart" style={linkStyle}>
-                    <Nav.Link href="#pricing">Precios</Nav.Link>
+                  <Link to="/products" style={linkStyle}>
+                    <Nav.Link href="#products">Productos</Nav.Link>
                   </Link>
+                  
                 </Nav>
               </Col>
               <Col lg="auto" className="text-center">
                 <Nav class="me-auto">
                   <Link to="/cart" style={linkStyle}>
-                    <Nav.Link href="#deets">
+                    <Nav.Link href="#cart">
                       <CartWidget />
                     </Nav.Link>
                   </Link>

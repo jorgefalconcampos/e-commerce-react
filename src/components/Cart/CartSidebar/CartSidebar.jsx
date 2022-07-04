@@ -1,6 +1,6 @@
 import Offcanvas from "react-bootstrap/Offcanvas";
 
-const Cart = () => {
+const CartSidebar = () => {
   function showCart() {}
 
   return <div>
@@ -16,4 +16,4 @@ const Cart = () => {
   </div>;
 };
 
-export default Cart;
+export default CartSidebar;
