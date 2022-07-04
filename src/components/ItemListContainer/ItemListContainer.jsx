@@ -4,6 +4,8 @@ import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 
+import { Link } from "react-router-dom";
+
 import { useState, useEffect } from "react";
 import { getFetch } from "../../helpers/getFetch";
 import LoadingScreen from "../General/LoadingScreen/LoadingScreen";
@@ -51,6 +53,12 @@ const ItemListContainer = () => {
                       little bit longer.
                     </Card.Text>
                   </Card.Body>
+                  <Card.Footer>
+                    <Link to="/detail">
+                       
+                        <Button variant="outline-primary">Ver detalle</Button>
+                    </Link>
+                  </Card.Footer>
                 </Card>
               </Col>
             ))}
