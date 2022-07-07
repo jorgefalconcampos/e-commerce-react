@@ -54,7 +54,7 @@ const NavBar = () => {
                 </Nav>
               </Col>
               <Col lg="auto" className="text-center">
-                <Nav class="me-auto">
+                <Nav className="me-auto">
                   <NavLink to="/cart" className="nav-item">
                     <CartWidget />
                   </NavLink>

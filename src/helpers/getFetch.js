@@ -1,3 +1,6 @@
+
+// import productos from ("../static/productos.json");
+
 let productos = [
     { "id": 1, "nombre": "Alebrije de león", "detalle": "Alebrije con figura tallada de león",
             "composicion": "Madera", "medidas": "24x19x90cm", "precio": 390, "divisa": "MXN" 

@@ -18,9 +18,9 @@ const CartItemDetail = () => {
         <Col xs={12} md={6} lg={7} className="">
             <h3>
               Artículo de prueba original con un título muy largo#1 del &nbsp;
-              <small class="text-muted">(nuevo)</small>
+              <small className="text-muted">(nuevo)</small>
             </h3>
-            {/* <h2 class="display-6"><strong>Display 4</strong></h2> */}
+            {/* <h2 className="display-6"><strong>Display 4</strong></h2> */}
             <span className="lead">Alebrije de madera</span>
             <p className="pt-2">
               <b>$3,500</b>
@@ -58,9 +58,9 @@ const CartItemDetail = () => {
         <Col xs={12} md={6} lg={7} className="">
             <h3>
               Artículo #1&nbsp;
-              <small class="text-muted">(nuevo)</small>
+              <small className="text-muted">(nuevo)</small>
             </h3>
-            {/* <h2 class="display-6"><strong>Display 4</strong></h2> */}
+            {/* <h2 className="display-6"><strong>Display 4</strong></h2> */}
             <span className="lead">Alebrije de madera</span>
             <p className="pt-2">
               <b>$3,500</b>

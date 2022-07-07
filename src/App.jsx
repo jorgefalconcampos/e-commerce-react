@@ -19,6 +19,10 @@ function App() {
      <BrowserRouter>
         <NavBar/>
            <Routes>
+            te quedaste en: 3:53:53
+            {/* https://coderhouse.zoom.us/rec/play/iIyconI5pdE580sgDc5_r38ZLNRk34ioE7qEcrAL1cf6Y-grQWjgyhnpUlD6BpGh0KPbXTOyHHcbBFQO.iVhEkOVgbhgQDJBc?continueMode=true&_x_zm_rtaid=_npW0wGkS_-uf2defB2Axw.1656879685285.0fb566f00fe0295811e26f8753c0e528&_x_zm_rhtaid=388 */}
+
+
             {/* Illustration by <a href="https://icons8.com/illustrations/author/N3YOxdn12Kox">Marina Mogulska</a> from <a href="https://icons8.com/illustrations">Ouch!</a> */}
             <Route path="/" element={<Home/>} />
             <Route path="/products" element={<ItemListContainer/>} />

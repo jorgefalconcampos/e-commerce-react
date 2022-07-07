@@ -4,7 +4,7 @@ import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Button from "react-bootstrap/Button";
 import Image from "react-bootstrap/Image";
-import welcome from "../../images/ouch-illustrations/welcome.png";
+import welcome from "../../static/images/ouch-illustrations/welcome.png";
 
 const Home = () => {
   return (
