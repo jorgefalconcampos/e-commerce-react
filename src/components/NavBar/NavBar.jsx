@@ -1,3 +1,4 @@
+import NavDropdown from "react-bootstrap/NavDropdown";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
@@ -8,15 +9,21 @@ import Col from "react-bootstrap/Col";
 import { Link, NavLink } from "react-router-dom";
 
 const NavBar = () => {
-  const linkStyle = {
-    display: "block",
-    textDecoration: "none",
-  };
+  const linkClasses = "nav-dropdown-link text-capitalize";
 
-  const linkStyleActive = {
-    textDecoration: "underline",
-    fontWeight: "bold",
-  };
+  // categories links
+  const links = [
+    {
+      className: linkClasses,
+      to: "/categories/madera",
+      name: "madera",
+    },
+    {
+      className: linkClasses,
+      to: "/categories/papel",
+      name: "papel",
+    },
+  ];
 
   const isLinkActive = (isActive) => {
     if (isActive) {
@@ -49,7 +56,24 @@ const NavBar = () => {
                     to="/products"
                     className={({ isActive }) => isLinkActive(isActive)}
                   >
-                    Productos
+                    Todos los productos
+                  </NavLink>
+                  <NavDropdown
+                    className="nav-item"
+                    title="Categorías"
+                    id="basic-nav-dropdown"
+                  >
+                    {links.map((link, index) => (
+                      <Link key={index} to={link.to} className={link.className}>
+                        {link.name}
+                      </Link>
+                    ))}
+                  </NavDropdown>
+                  <NavLink
+                    to="/categories"
+                    className={({ isActive }) => isLinkActive(isActive)}
+                  >
+                    Categorías
                   </NavLink>
                 </Nav>
               </Col>

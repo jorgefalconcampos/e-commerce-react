@@ -28,6 +28,29 @@
   color: #61dafb;
 }
 
+.nav-dropdown-link{
+  display: block;
+  width: 100%;
+  padding: .25rem 1rem;
+  clear: both;
+  font-weight: 400;
+  color: #212529;
+  text-align: inherit;
+  text-decoration: none;
+  white-space: nowrap;
+  background-color: transparent;
+  border: 0;
+}
+
+.nav-link{
+  display: inline !important;
+  color: white !important;
+}
+
+.nav-dropdown-link:hover{
+  background-color: #E9ECEF;
+}
+
 .nav-item {
   padding-left: 0.25rem;
   padding-right: 0.25rem;

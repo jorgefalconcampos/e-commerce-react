@@ -8,7 +8,7 @@ const Item = ({ item }) => {
   return (
     <Col>
       <Card>
-        <Card.Img variant="top" src={item.src} />
+        {/* <Card.Img variant="top" src={item.src} /> */}
         <Card.Body>
           <Card.Title>
             {item.nombre}
@@ -18,7 +18,7 @@ const Item = ({ item }) => {
           </Card.Text>
         </Card.Body>
         <Card.Footer>
-          <Link to="/detail">
+          <Link to={`/detail/${item.id}`}>
             <Button variant="outline-primary">Ver detalle</Button>
           </Link>
         </Card.Footer>

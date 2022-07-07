@@ -24,11 +24,14 @@ function App() {
 
 
             {/* Illustration by <a href="https://icons8.com/illustrations/author/N3YOxdn12Kox">Marina Mogulska</a> from <a href="https://icons8.com/illustrations">Ouch!</a> */}
-            <Route path="/" element={<Home/>} />
+            <Route index path="/" element={<Home/>} />
+            {/* <Route path="/categories" element={<ItemListContainer/>} /> */}
             <Route path="/products" element={<ItemListContainer/>} />
-            <Route path="/detail" element={<ItemDetailContainer/>} />
+            <Route path="/categories/:categoryName" element={<ItemListContainer/>} />
+            <Route path="/detail/:productId" element={<ItemDetailContainer/>} />
             <Route path="/cart" element={<CartDetail/>} />
             <Route path="*" element={<Error404/>}/>
+            {/* <Route path="*" element={ <Navigate to="/"/>}  /> */}
             {/* <Route path="/contact" element={<Formulario input = { Input }></Formulario>} /> */}
           </Routes>      
     </BrowserRouter>
