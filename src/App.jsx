@@ -9,6 +9,7 @@ import Error404 from './components/General/Errors/Error404'
 import CartDetail from './components/Cart/CartDetail/CartDetail'
 import ItemListContainer from "./components/ItemListContainer/ItemListContainer"
 import ItemDetailContainer from './components/ItemDetailContainer/ItemDetailContainer'
+import ItemDetail from './components/ItemDetailContainer/ItemDetail'
 // estilos
 import "./App.css"
 import 'bootstrap/dist/css/bootstrap.min.css';
