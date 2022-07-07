@@ -6,7 +6,8 @@ const ItemDetail = ({ item }) => {
   return (
     <Col>
       <Card>
-        {/* <Card.Img variant="top" src={item.src} /> */}
+        <img src={`/src/${item.url}`} className="card-img" alt="" />
+        {/* <Card.Img variant="top" src={`/src/${item.url}`} /> */}
         <Card.Body>
           <Card.Title>
             {item.nombre}

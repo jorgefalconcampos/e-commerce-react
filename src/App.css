@@ -28,6 +28,11 @@
   color: #61dafb;
 }
 
+.card-img {
+  background-color: #efefef;
+  max-height: 430px !important;
+}
+
 .nav-dropdown-link{
   display: block;
   width: 100%;

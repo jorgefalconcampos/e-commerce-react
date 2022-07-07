@@ -8,7 +8,7 @@ let productos = [
     medidas: "24x19x90cm",
     precio: 390,
     divisa: "MXN",
-    src: "../static/images/products/articulo1_leon_1.png"
+    url: "static/images/products/articulo1_leon_1.png"
   },
   {
     id: 2,
@@ -19,7 +19,7 @@ let productos = [
     medidas: "29x12x90cm",
     precio: 790,
     divisa: "MXN",
-    src: "../static/images/products/articulo2_zorro_1.png"
+    url: "static/images/products/articulo2_zorro_1.png"
   },
 ];
 

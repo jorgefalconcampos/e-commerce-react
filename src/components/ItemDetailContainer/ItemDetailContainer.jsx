@@ -17,7 +17,7 @@ const ItemDetailContainer = () => {
       ))
       .catch((err) => console.log(err))
       .finally(() => setLoading(false));
-  }, productId);
+  }, [productId]);
 
   console.log(productId);
 

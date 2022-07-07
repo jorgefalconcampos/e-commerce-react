@@ -8,7 +8,8 @@ const Item = ({ item }) => {
   return (
     <Col>
       <Card>
-        {/* <Card.Img variant="top" src={item.src} /> */}
+        <img src={`/src/${item.url}`} className="card-img" alt="" />
+        {/* <Card.Img variant="top" src={item.src} className="card-img-top" /> */}
         <Card.Body>
           <Card.Title>
             {item.nombre}
@@ -20,6 +21,10 @@ const Item = ({ item }) => {
         <Card.Footer>
           <Link to={`/detail/${item.id}`}>
             <Button variant="outline-primary">Ver detalle</Button>
+          </Link>
+          &nbsp;
+          <Link to={`/categories/${item.categoria}`}>
+            <Button className="text-capitalize" variant="outline-primary">{item.categoria}</Button>
           </Link>
         </Card.Footer>
       </Card>
