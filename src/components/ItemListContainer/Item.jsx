@@ -4,17 +4,17 @@ import Card from "react-bootstrap/Card";
 import { Link } from "react-router-dom";
 
 const Item = ({ item }) => {
+  console.log(item)
   return (
     <Col>
       <Card>
-        <Card.Img variant="top" src="https://via.placeholder.com/600x300" />
+        <Card.Img variant="top" src={item.src} />
         <Card.Body>
           <Card.Title>
-            {item.nombre} {item.id}
+            {item.nombre}
           </Card.Title>
           <Card.Text>
-            This is a longer card with supporting text below as a natural
-            lead-in to additional content. This content is a little bit longer.
+            {item.detalle}
           </Card.Text>
         </Card.Body>
         <Card.Footer>
