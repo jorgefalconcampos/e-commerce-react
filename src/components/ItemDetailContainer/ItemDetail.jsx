@@ -1,13 +1,13 @@
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
+import Carousel from 'react-bootstrap/Carousel'
 
 const ItemDetail = ({ item }) => {
   return (
     <Col>
       <Card>
-        <img src={`/src/${item.url}`} className="card-img" alt="" />
-        {/* <Card.Img variant="top" src={`/src/${item.url}`} /> */}
+        <Card.Img variant="top" src={item.img[0]} className="card-img"/>
         <Card.Body>
           <Card.Title>
             {item.nombre}

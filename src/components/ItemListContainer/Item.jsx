@@ -4,12 +4,11 @@ import Card from "react-bootstrap/Card";
 import { Link } from "react-router-dom";
 
 const Item = ({ item }) => {
-  console.log(item)
+  console.log(item.url)
   return (
     <Col>
       <Card>
-        <img src={`/src/${item.url}`} className="card-img" alt="" />
-        {/* <Card.Img variant="top" src={item.src} className="card-img-top" /> */}
+        <Card.Img variant="top" src={item.img[0]} className="card-img-top" />
         <Card.Body>
           <Card.Title>
             {item.nombre}

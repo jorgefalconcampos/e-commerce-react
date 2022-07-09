@@ -14,9 +14,9 @@ const CartSummaryDetail = () => {
       <ListGroup variant="flush">
         <ListGroup.Item className="d-flex justify-content-between align-items-center">
           <div className="ms-1 me-auto">
-            <strong>Subtotal</strong>&nbsp;(2)
+            <strong>Subtotal</strong>&nbsp;(999)&nbsp;
           </div>
-          <span>$135,000</span>
+          <span>$999,999,000</span>
         </ListGroup.Item>
         <ListGroup.Item className="d-flex justify-content-between align-items-center">
           <div className="ms-1 me-auto">

@@ -69,12 +69,6 @@ const NavBar = () => {
                       </Link>
                     ))}
                   </NavDropdown>
-                  <NavLink
-                    to="/categories"
-                    className={({ isActive }) => isLinkActive(isActive)}
-                  >
-                    Categorías
-                  </NavLink>
                 </Nav>
               </Col>
               <Col lg="auto" className="text-center">

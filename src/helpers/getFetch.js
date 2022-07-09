@@ -1,3 +1,5 @@
+import { articulos } from "../static/images_index.js"
+
 let productos = [
   {
     id: 1,
@@ -8,7 +10,8 @@ let productos = [
     medidas: "24x19x90cm",
     precio: 390,
     divisa: "MXN",
-    url: "static/images/products/articulo1_leon_1.png"
+    disponible: 7,
+    img: [ articulos.art1_img1, articulos.art1_img2 ]
   },
   {
     id: 2,
@@ -19,7 +22,8 @@ let productos = [
     medidas: "29x12x90cm",
     precio: 790,
     divisa: "MXN",
-    url: "static/images/products/articulo2_zorro_1.png"
+    disponible: 12,
+    img: [ articulos.art2_img1, articulos.art2_img2 ]
   },
 ];
 
