@@ -1,27 +1,32 @@
+import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import Button from "react-bootstrap/Button";
-import Card from "react-bootstrap/Card";
-import Carousel from 'react-bootstrap/Carousel'
+import Container from "react-bootstrap/Container";
+import ItemViewPrice from "./ItemDetailViewPrice";
+import ItemViewCarousel from "./ItemDetailViewCarousel";
+import Breadcrumb from "react-bootstrap/Breadcrumb";
+import { Link } from "react-router-dom";
 
 const ItemDetail = ({ item }) => {
+  console.log(item);
   return (
-    <Col>
-      <Card>
-        <Card.Img variant="top" src={item.img[0]} className="card-img"/>
-        <Card.Body>
-          <Card.Title>
-            {item.nombre}
-          </Card.Title>
-          <Card.Text>
-            {item.detalle}
-          </Card.Text>
-        </Card.Body>
-        <Card.Footer>
-            <Button variant="outline-primary">Ver detalle</Button>
-        </Card.Footer>
-      </Card>
-    </Col>
+    <Container className="py-2">
+      <Breadcrumb className="mx-5">
+        <Breadcrumb.Item href="/">Inicio</Breadcrumb.Item>
+        <Breadcrumb.Item href={`/categories/${item.categoria}`} className="text-capitalize">
+          {item.categoria}
+        </Breadcrumb.Item>
+        <Breadcrumb.Item active>{item.nombre}</Breadcrumb.Item>
+      </Breadcrumb>
+      <Row>
+        <Col lg={7} className="">
+          <ItemViewCarousel product={item} />
+        </Col>
+        <Col lg={5} className="">
+          <ItemViewPrice product={item} />
+        </Col>
+      </Row>
+    </Container>
   );
-}
+};
 
 export default ItemDetail;

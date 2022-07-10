@@ -81,6 +81,34 @@
 }
 
 
+.item-title {
+  font-size: 1.75rem;
+}
+
+.item-detail {
+  font-size: 0.99rem;
+  color: #757575;
+}
+
+.item-eligibility {
+  font-size: 0.85rem !important;
+}
+
+.item-price {
+  border-radius: 5px;
+  border-left: 6px solid #428bca !important;
+  background-color: #e1f1ff;
+  padding: 0.65em 10px;
+  margin: 0.75rem 0rem !important;
+  width: 60% !important;
+
+}
+
+.item-info-title{
+  font-size: 1.2rem;
+}
+
+
 
 @keyframes App-logo-spin {
   from {

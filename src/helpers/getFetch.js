@@ -11,7 +11,12 @@ let productos = [
     precio: 390,
     divisa: "MXN",
     disponible: 7,
-    img: [ articulos.art1_img1, articulos.art1_img2 ]
+    img: [ 
+      articulos.art1_img1, 
+      articulos.art1_img2, 
+      articulos.art1_img3, 
+      articulos.art1_img4, 
+    ]
   },
   {
     id: 2,
