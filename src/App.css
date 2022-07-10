@@ -108,7 +108,20 @@
   font-size: 1.2rem;
 }
 
+.footer-bottom {
+  position: relative;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
 
+.footer-link a {
+  color: #74b4f5 !important;
+}
+
+.footer-link a:hover{
+  color: #2f8cff !important;
+}
 
 @keyframes App-logo-spin {
   from {

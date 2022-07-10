@@ -1,5 +1,4 @@
 // librerías/dependencias
-import { useState } from 'react'
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom"
 // componentes
 import NavBar from "./components/NavBar/NavBar"
@@ -9,7 +8,7 @@ import Error404 from './components/General/Errors/Error404'
 import CartDetail from './components/Cart/CartDetail/CartDetail'
 import ItemListContainer from "./components/ItemListContainer/ItemListContainer"
 import ItemDetailContainer from './components/ItemDetailContainer/ItemDetailContainer'
-import ItemDetail from './components/ItemDetailContainer/ItemDetail'
+import Footer from './components/Footer/Footer'
 // estilos
 import "./App.css"
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -20,7 +19,6 @@ function App() {
      <BrowserRouter>
         <NavBar/>
            <Routes>
-            {/* Illustration by <a href="https://icons8.com/illustrations/author/N3YOxdn12Kox">Marina Mogulska</a> from <a href="https://icons8.com/illustrations">Ouch!</a> */}
             <Route index path="/" element={<Home/>} />
             {/* <Route path="/categories" element={<ItemListContainer/>} /> */}
             <Route path="/products" element={<ItemListContainer/>} />
@@ -31,6 +29,7 @@ function App() {
             {/* <Route path="*" element={ <Navigate to="/"/>}  /> */}
             {/* <Route path="/contact" element={<Formulario input = { Input }></Formulario>} /> */}
           </Routes>
+          <Footer/>
 
     </BrowserRouter>
     
