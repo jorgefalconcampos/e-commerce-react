@@ -5,10 +5,14 @@ import Row from "react-bootstrap/Row";
 import Button from "react-bootstrap/Button";
 import Image from "react-bootstrap/Image";
 import welcome from "../../static/images/ouch-illustrations/welcome.png";
+import EventsAndContext from "./EventsAndContext";
 
 const Home = () => {
   return (
     <Container className="">
+
+      <EventsAndContext/>
+
       <Row className="d-flex justify-content-center py-4">
         <Col xs={12} className="pb-2 text-center">
           <h1 className="display-5">¡Hola! Te damos una cálida bienvenida a la tienda de React</h1>

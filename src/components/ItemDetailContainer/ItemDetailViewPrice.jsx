@@ -30,7 +30,7 @@ const ItemViewPrice = ({ product }) => {
                     placement="right"
                     overlay={
                       <Tooltip id="right">
-                        <strong>{product.disponible}</strong>&nbsp;en stock
+                        <strong>{product.disponible}</strong>&nbsp;unidades en stock
                       </Tooltip>
                     }
                   >
