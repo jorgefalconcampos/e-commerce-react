@@ -4,7 +4,6 @@ import Container from "react-bootstrap/Container";
 import ItemViewPrice from "./ItemDetailViewPrice";
 import ItemViewCarousel from "./ItemDetailViewCarousel";
 import Breadcrumb from "react-bootstrap/Breadcrumb";
-import { Link } from "react-router-dom";
 
 const ItemDetail = ({ item }) => {
   console.log(item);
@@ -19,10 +18,10 @@ const ItemDetail = ({ item }) => {
       </Breadcrumb>
       <Row>
         <Col lg={7} className="">
-          <ItemViewCarousel product={item} />
+          <ItemViewCarousel product={item}/>
         </Col>
         <Col lg={5} className="">
-          <ItemViewPrice product={item} />
+          <ItemViewPrice product={item}/>
         </Col>
       </Row>
     </Container>

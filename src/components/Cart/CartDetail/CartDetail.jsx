@@ -1,10 +1,8 @@
 import Container from "react-bootstrap/Container";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
-import { Link } from "react-router-dom";
 import CartItemDetail from "./CartItemDetail";
 import CartSummaryDetail from "./CartSummaryDetail";
-import Button from "react-bootstrap/Button";
 
 const CartDetail = () => {
   return (

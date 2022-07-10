@@ -20,10 +20,7 @@ const CartSummaryDetail = () => {
         </ListGroup.Item>
         <ListGroup.Item className="d-flex justify-content-between align-items-center">
           <div className="ms-1 me-auto">
-            {/* <div> */}
             <strong>Envío</strong>
-            {/* </div> */}
-            {/* <span>(costo delmbalaje)</span> */}
           </div>
           <Badge bg="success" className="p-2">
             ¡Gratis!

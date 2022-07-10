@@ -3,7 +3,6 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import Image from "react-bootstrap/Image";
-// import error404 from "../../../images/ouch-illustrations/error404.png";
 import error404 from "../../../static/images/ouch-illustrations/error404.png";
 
 const Error404 = () => {

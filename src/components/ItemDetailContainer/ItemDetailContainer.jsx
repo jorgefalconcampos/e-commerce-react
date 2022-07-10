@@ -21,8 +21,6 @@ const ItemDetailContainer = () => {
 
   console.log(productId);
 
-  // Ya con un products.filter((product) => product.id === id) sale
-
   return (
     <div>
       <Container className="py-4">

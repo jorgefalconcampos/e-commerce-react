@@ -1,6 +1,3 @@
-import Row from "react-bootstrap/Row";
-import Button from "react-bootstrap/Button";
-import Card from "react-bootstrap/Card";
 import Carousel from "react-bootstrap/Carousel";
 import Image from "react-bootstrap/Image";
 
