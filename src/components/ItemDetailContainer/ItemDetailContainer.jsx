@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { getFetch } from "../../helpers/getFetch";
-import LoadingScreen from "../General/LoadingScreen/LoadingScreen";
+import LoadingScreen from "../General/LoadingScreens/SpinnerLoading";
 import ItemDetail from "./ItemDetail";
 import Container from "react-bootstrap/Container";
 
