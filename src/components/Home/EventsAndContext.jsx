@@ -5,9 +5,17 @@ import Row from "react-bootstrap/Row";
 import Form from "react-bootstrap/Form";
 
 import { useState } from "react";
+import axios from "axios";
 
 const EventsAndContext = () => {
-  const [value, setValue] = useState("");
+  // te quedaste en 1:58:30
+  //https://coderhouse.zoom.us/rec/play/Y27pjWVnthj6Y7JYFQ0_ZOOKRngmElE_tDNJbp70b7BhAfxWH960kHJFCla62-H87zBM9u2xPu0awWIl.dbWLulQYWEIJsP3B?continueMode=true&_x_zm_rtaid=F-onLsOWTIWxsYigC4Fbsg.1657424590264.a9ccce0a7d9b4c67c8f253cab0333f94&_x_zm_rhtaid=336
+
+  const [value, setValue] = useState('');
+  const [user, setUser] = useState({});
+
+  // console.log(value)
+
 
   const onChangeValue = (e) => {
     // console.log(e.target.value);
@@ -15,12 +23,32 @@ const EventsAndContext = () => {
   };
 
   const onSubmitEvt = (e) => {
+    // console.log(e)
+
     e.preventDefault();
-    console.log(`Se hizo submit de lo siguiente: ${value}`);
+    // console.log(`Se hizo submit de lo siguiente: ${value}`);
+    const userInput = value.toLowerCase().replace(/ /g, '');
+
+    if (userInput) {
+      axios(`https://api.github.com/users/${userInput}`).then((res) => {
+        console.log(res.data);
+        setUser(res.data);
+      })
+    }
+
+    e.target[0].value = "";
+    setValue("");
+    
   };
 
   return (
     <>
+    {
+      user.id ? 
+      <h1>usuario encontrado</h1> : 
+      <h1>No haz iniciado una búsqueda o la búsqueda no fue satisfactoria</h1>
+    }
+    
       <div className="py-5 m-3 bg-info">
         <Form onSubmit={onSubmitEvt}>
           <Form.Group className="mb-3" controlId="formBasicEmail">

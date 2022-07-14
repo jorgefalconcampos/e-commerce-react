@@ -31,11 +31,11 @@ const ItemListContainer = () => {
   console.log(categoryName);
 
   return (
-    <div>
+    <>
       <Container className="py-4">
         {loading ? <LoadingScreen /> : <ItemList items={products}></ItemList>}
       </Container>
-    </div>
+    </>
   );
 };
 

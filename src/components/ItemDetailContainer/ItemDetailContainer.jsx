@@ -22,11 +22,11 @@ const ItemDetailContainer = () => {
   console.log(productId);
 
   return (
-    <div>
+    <>
       <Container className="py-4">
         {loading ? <LoadingScreen /> : <ItemDetail item={product}/>}
       </Container>
-    </div>
+    </>
   );
 };
 

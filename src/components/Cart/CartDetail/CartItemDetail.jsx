@@ -9,7 +9,7 @@ import Tooltip from 'react-bootstrap/Tooltip';
 
 const CartItemDetail = () => {
   return (
-    <div>
+    <>
       <Row className="d-flex justify-content-center p-2 py-md-3 m-2 m-md-0 m-lg-0 mb-lg-3 border rounded">
         <Col
           xs={12}
@@ -140,7 +140,7 @@ const CartItemDetail = () => {
           </Row>
         </Col>
       </Row>
-    </div>
+    </>
   );
 };
 
