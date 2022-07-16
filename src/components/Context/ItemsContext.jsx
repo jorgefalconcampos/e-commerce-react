@@ -1,6 +1,8 @@
-import { articulos } from "../static/images_index.js"
+import { createContext, useState } from "react";
 
-let productos = [
+export const ItemsContext = createContext();
+
+const initialState = [
   {
     id: 1,
     nombre: "Alebrije de león",
@@ -11,12 +13,7 @@ let productos = [
     precio: 390,
     divisa: "MXN",
     disponible: 7,
-    img: [ 
-      articulos.art1_img1, 
-      articulos.art1_img2, 
-      articulos.art1_img3, 
-      articulos.art1_img4, 
-    ]
+   
   },
   {
     id: 2,
@@ -28,17 +25,16 @@ let productos = [
     precio: 790,
     divisa: "MXN",
     disponible: 12,
-    img: [ articulos.art2_img1, articulos.art2_img2 ]
+   
   },
 ];
 
-export const getFetch = new Promise((resolve, rejected) => {
-  let condition = true;
-  if (condition) {
-    setTimeout(() => {
-      resolve(productos);
-    }, 7000);
-  } else {
-    rejected("400 Not found");
-  }
-});
+export const ItemsProvider = ({ children }) => {
+    const [items, setItems] = useState(initialState);
+
+    return (
+        <ItemsContext.Provider value={[items, setItems]}>
+            {children}
+        </ItemsContext.Provider>
+    )
+}
