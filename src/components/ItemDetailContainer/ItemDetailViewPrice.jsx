@@ -9,6 +9,9 @@ import ItemCount from "./ItemCount";
 import { useContext, useState } from "react";
 import { CartContext } from "../Context/CartContext/CartContext";
 import { Link } from "react-router-dom";
+import Trash3Fill from "react-bootstrap-icons/dist/icons/trash3-fill";
+import CartCheckFill from "react-bootstrap-icons/dist/icons/cart-check-fill";
+import XSquareFill from "react-bootstrap-icons/dist/icons/x-square-fill";
 
 const ItemDetailViewPrice = ({ product }) => {
   const [cart, addToCart] = useContext(CartContext);
@@ -24,11 +27,13 @@ const ItemDetailViewPrice = ({ product }) => {
     }
   };
 
+  const removeItem = (id) => {};
+
   const funcionContador = (contador) => {
     console.log("el valor del contador es: " + contador);
     setCantidad(contador);
 
-    const producto = { item: product, quantity: contador}
+    const producto = { item: product, quantity: contador };
     addToCart(producto);
   };
 
@@ -102,9 +107,24 @@ const ItemDetailViewPrice = ({ product }) => {
             <hr />
 
             {cantidad ? (
-              <Link to="/cart">
-                <Button variant="primary">Terminar compra</Button>
-              </Link>
+              <div>
+                <Link to="/cart">
+                  <Button className="mx-1" variant="primary">
+                    <span>Terminar compra</span>&nbsp;
+                    <CartCheckFill></CartCheckFill>
+                  </Button>
+                </Link>
+                {/* <Button className="mx-1" variant="danger">Quitar del carrito</Button> */}
+                <Button className="mx-1" variant="warning">
+                  <span>Quitar del carrito</span>&nbsp;
+                  <XSquareFill></XSquareFill>
+                </Button>
+
+                <Button className="mx-1" variant="danger">
+                  <span>Eliminar todo el carrito</span>&nbsp;
+                  <Trash3Fill></Trash3Fill>
+                </Button>
+              </div>
             ) : (
               <ItemCount
                 stock={product.stock}

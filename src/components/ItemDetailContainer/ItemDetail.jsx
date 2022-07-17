@@ -6,7 +6,7 @@ import ItemDetailViewCarousel from "./ItemDetailViewCarousel";
 import Breadcrumb from "react-bootstrap/Breadcrumb";
 
 const ItemDetail = ({ item }) => {
-  console.log(item);
+  // console.log(item);
   return (
     <Container className="py-2">
       <Breadcrumb className="mx-5">

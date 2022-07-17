@@ -50,8 +50,13 @@ const ItemCount = ({ stock, initial, onAdd, productName }) => {
             {/* <span className="px-2">
               {count}
             </span> */}
+
             <Form.Control
               className="text-center"
+              readOnly
+              // plaintext
+              // defaultValue={initial}
+              // type="number"
               placeholder={initial}
               value={count || ""}
               onBlur={onBlur}

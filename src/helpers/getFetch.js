@@ -8,6 +8,7 @@ let productos = [
     composicion: "Madera de roble",
     categoria: "madera",
     medidas: "24x19x90cm",
+    estado: "nuevo",
     precio: 390,
     envio: 0,
     divisa: "MXN",
@@ -26,6 +27,7 @@ let productos = [
     composicion: "Pasta de papel",
     categoria: "papel",
     medidas: "29x12x90cm",
+    estado: "usado",
     precio: 790,
     envio: 300,
     divisa: "MXN",
@@ -39,7 +41,7 @@ export const getFetch = new Promise((resolve, rejected) => {
   if (condition) {
     setTimeout(() => {
       resolve(productos);
-    }, 2000);
+    }, 500);
   } else {
     rejected("400 Not found");
   }
