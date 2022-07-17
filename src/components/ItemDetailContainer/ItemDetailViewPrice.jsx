@@ -14,8 +14,9 @@ import CartCheckFill from "react-bootstrap-icons/dist/icons/cart-check-fill";
 import XSquareFill from "react-bootstrap-icons/dist/icons/x-square-fill";
 
 const ItemDetailViewPrice = ({ product }) => {
-  const [cart, addToCart] = useContext(CartContext);
+  const [cart, addToCart, removeFromCart, clearCart] = useContext(CartContext);
   const [cantidad, setCantidad] = useState();
+  const [addAgain, setAddAgain] = useState(false);
 
   console.log(cart);
 
@@ -27,14 +28,22 @@ const ItemDetailViewPrice = ({ product }) => {
     }
   };
 
-  const removeItem = (id) => {};
-
   const funcionContador = (contador) => {
     console.log("el valor del contador es: " + contador);
     setCantidad(contador);
 
     const producto = { item: product, quantity: contador };
     addToCart(producto);
+    setAddAgain(false);
+  };
+
+  const quitarItemDelCarrito = () => {
+    setAddAgain(true);
+    removeFromCart(product.id);
+  };
+
+  const eliminarCarrito = () => {
+    clearCart();
   };
 
   return (
@@ -106,25 +115,48 @@ const ItemDetailViewPrice = ({ product }) => {
 
             <hr />
 
-            {cantidad ? (
-              <div>
-                <Link to="/cart">
-                  <Button className="mx-1" variant="primary">
-                    <span>Terminar compra</span>&nbsp;
-                    <CartCheckFill></CartCheckFill>
-                  </Button>
-                </Link>
-                {/* <Button className="mx-1" variant="danger">Quitar del carrito</Button> */}
-                <Button className="mx-1" variant="warning">
-                  <span>Quitar del carrito</span>&nbsp;
-                  <XSquareFill></XSquareFill>
-                </Button>
+            {cantidad && !addAgain ? (
+              <Row>
+                <Col xs={5}>
+                  <Link to="/cart">
+                    <Button className="mx-1 my-2" variant="primary">
+                      <span>Terminar compra</span>&nbsp;
+                      <CartCheckFill></CartCheckFill>
+                    </Button>
+                  </Link>
+                  {/* <Button className="mx-1" variant="danger">Quitar del carrito</Button> */}
 
-                <Button className="mx-1" variant="danger">
-                  <span>Eliminar todo el carrito</span>&nbsp;
-                  <Trash3Fill></Trash3Fill>
-                </Button>
-              </div>
+                  <OverlayTrigger
+                    key="bottom"
+                    placement="right"
+                    overlay={
+                      <Tooltip id="remove_from_cart">
+                        Tu <strong>{product.nombre}</strong> se eliminará por
+                        completo de tu carrito.&nbsp;
+                        {cantidad < 2 ? null : <>(<strong>{cantidad}</strong> unidades).</>}
+                      </Tooltip>
+                    }
+                  >
+                    <Button
+                      className="mx-1 my-2"
+                      variant="warning"
+                      onClick={quitarItemDelCarrito}
+                    >
+                      <span>Quitar del carrito</span>&nbsp;
+                      <XSquareFill></XSquareFill>
+                    </Button>
+                  </OverlayTrigger>
+
+                  <Button
+                    className="mx-1 my-2"
+                    variant="danger"
+                    onClick={eliminarCarrito}
+                  >
+                    <span>Limpiar el carrito</span>&nbsp;
+                    <Trash3Fill></Trash3Fill>
+                  </Button>
+                </Col>
+              </Row>
             ) : (
               <ItemCount
                 stock={product.stock}
