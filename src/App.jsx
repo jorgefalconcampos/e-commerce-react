@@ -1,7 +1,8 @@
 // librerías/dependencias
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 // import { ItemsProvider } from "./components/Context/ItemsContext";
-import { CarritoContext } from "./components/Context/CartContext/CarritoContext";
+import { CarritoProvider } from "./components/Context/CartContext/CarritoContext";
+
 
 // import ItemList from "./components/Context/ItemList";
 // componentes
@@ -20,7 +21,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 function App() {
   return (
     <BrowserRouter>
-      <CarritoContext>
+      <CarritoProvider>
         {/* <ItemsProvider> */}
         <NavBar />
         {/* <ItemList /> */}
@@ -41,7 +42,7 @@ function App() {
         </Routes>
         <Footer />
         {/* </ItemsProvider> */}
-      </CarritoContext>
+      </CarritoProvider>
     </BrowserRouter>
   );
 }
