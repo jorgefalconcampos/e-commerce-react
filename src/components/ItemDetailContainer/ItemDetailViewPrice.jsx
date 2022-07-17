@@ -1,18 +1,16 @@
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
-
 import Badge from "react-bootstrap/Badge";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
 import { StarFill, BoxSeam } from "react-bootstrap-icons";
 import ItemCount from "./ItemCount";
-import { useContext } from "react";
-import { CartContext } from "../Context/CartContext/CarritoContext";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { CartContext } from "../Context/CartContext/CartContext";
 import { Link } from "react-router-dom";
 
-const ItemViewPrice = ({ product }) => {
+const ItemDetailViewPrice = ({ product }) => {
   const [cart, addToCart] = useContext(CartContext);
   const [cantidad, setCantidad] = useState();
 
@@ -122,4 +120,4 @@ const ItemViewPrice = ({ product }) => {
   );
 };
 
-export default ItemViewPrice;
+export default ItemDetailViewPrice;

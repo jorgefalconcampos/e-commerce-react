@@ -1,14 +1,14 @@
 import Carousel from "react-bootstrap/Carousel";
 import Image from "react-bootstrap/Image";
 
-const ItemViewCarousel = ({ product }) => {
+const ItemDetailViewCarousel = ({ product }) => {
   return (
     <>
       <Carousel variant="dark" className="">
-        {product.img.map((review, index) => (
+        {product.img.map((preview, index) => (
           <Carousel.Item key={index} className="">
             <Image
-              src={review}
+              src={preview}
               fluid
               className="d-block mx-auto"
               alt={`Imagen ${index+1} de ${product.nombre}`}
@@ -21,4 +21,4 @@ const ItemViewCarousel = ({ product }) => {
   );
 };
 
-export default ItemViewCarousel;
+export default ItemDetailViewCarousel;

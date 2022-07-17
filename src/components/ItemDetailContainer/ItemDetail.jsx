@@ -1,8 +1,8 @@
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
-import ItemViewPrice from "./ItemDetailViewPrice";
-import ItemViewCarousel from "./ItemDetailViewCarousel";
+import ItemDetailViewPrice from "./ItemDetailViewPrice";
+import ItemDetailViewCarousel from "./ItemDetailViewCarousel";
 import Breadcrumb from "react-bootstrap/Breadcrumb";
 
 const ItemDetail = ({ item }) => {
@@ -17,11 +17,12 @@ const ItemDetail = ({ item }) => {
         <Breadcrumb.Item active>{item.nombre}</Breadcrumb.Item>
       </Breadcrumb>
       <Row>
-        <Col lg={7} className="">
-          <ItemViewCarousel product={item}/>
+        <Col lg={7}>
+          <ItemDetailViewCarousel product={item}/>
         </Col>
-        <Col lg={5} className="">
-          <ItemViewPrice product={item}/>
+        <Col lg={5}>
+          {/* ItemDetailViewPrice es el equivalente a ItemDetail */}
+          <ItemDetailViewPrice product={item}/>
         </Col>
       </Row>
     </Container>
