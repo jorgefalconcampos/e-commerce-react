@@ -1,7 +1,9 @@
 // librerías/dependencias
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import { ItemsProvider } from "./components/Context/ItemsContext";
-import ItemList from "./components/Context/ItemList";
+// import { ItemsProvider } from "./components/Context/ItemsContext";
+import { CarritoContext } from "./components/Context/CartContext/CarritoContext";
+
+// import ItemList from "./components/Context/ItemList";
 // componentes
 import NavBar from "./components/NavBar/NavBar";
 import Home from "./components/Home/Home";
@@ -18,11 +20,10 @@ import "bootstrap/dist/css/bootstrap.min.css";
 function App() {
   return (
     <BrowserRouter>
-      <ItemsProvider>
+      <CarritoContext>
+        {/* <ItemsProvider> */}
         <NavBar />
-        <ItemList/>
-
-
+        {/* <ItemList /> */}
 
         <Routes>
           <Route index path="/" element={<Home />} />
@@ -39,7 +40,8 @@ function App() {
           {/* <Route path="/contact" element={<Formulario input = { Input }></Formulario>} /> */}
         </Routes>
         <Footer />
-      </ItemsProvider>
+        {/* </ItemsProvider> */}
+      </CarritoContext>
     </BrowserRouter>
   );
 }

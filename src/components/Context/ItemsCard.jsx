@@ -1,12 +1,12 @@
-import React from 'react'
+// import React from 'react'
 
-const ItemsCard = ({ data }) => {
-  return (
-    <div>
-        <p>{data.nombre}</p>
-        <p>{data.medidas}</p>
-    </div>
-  )
-}
+// const ItemsCard = ({ data }) => {
+//   return (
+//     <>
+//         {/* <p>{data.nombre}</p>
+//         <p>{data.medidas}</p> */}
+//     </>
+//   )
+// }
 
-export default ItemsCard
+// export default ItemsCard

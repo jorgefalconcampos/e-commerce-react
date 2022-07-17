@@ -28,7 +28,7 @@ const ItemListContainer = () => {
     }
   }, [categoryName]);
 
-  console.log(categoryName);
+  // console.log(categoryName);
 
   return (
     <>

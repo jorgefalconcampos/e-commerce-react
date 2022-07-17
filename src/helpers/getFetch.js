@@ -9,8 +9,9 @@ let productos = [
     categoria: "madera",
     medidas: "24x19x90cm",
     precio: 390,
+    envio: 0,
     divisa: "MXN",
-    disponible: 7,
+    stock: 7,
     img: [ 
       articulos.art1_img1, 
       articulos.art1_img2, 
@@ -26,8 +27,9 @@ let productos = [
     categoria: "papel",
     medidas: "29x12x90cm",
     precio: 790,
+    envio: 300,
     divisa: "MXN",
-    disponible: 12,
+    stock: 12,
     img: [ articulos.art2_img1, articulos.art2_img2 ]
   },
 ];
@@ -37,7 +39,7 @@ export const getFetch = new Promise((resolve, rejected) => {
   if (condition) {
     setTimeout(() => {
       resolve(productos);
-    }, 7000);
+    }, 2000);
   } else {
     rejected("400 Not found");
   }

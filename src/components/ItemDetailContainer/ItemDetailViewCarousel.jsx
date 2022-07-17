@@ -6,7 +6,7 @@ const ItemViewCarousel = ({ product }) => {
     <>
       <Carousel variant="dark" className="">
         {product.img.map((review, index) => (
-          <Carousel.Item key={review.id} className="">
+          <Carousel.Item key={index} className="">
             <Image
               src={review}
               fluid

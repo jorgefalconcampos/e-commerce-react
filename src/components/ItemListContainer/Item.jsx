@@ -4,7 +4,6 @@ import Card from "react-bootstrap/Card";
 import { Link } from "react-router-dom";
 
 const Item = ({ item }) => {
-  console.log(item.url)
   return (
     <Col>
       <Card>
@@ -19,11 +18,11 @@ const Item = ({ item }) => {
         </Card.Body>
         <Card.Footer>
           <Link to={`/detail/${item.id}`}>
-            <Button variant="outline-primary">Ver detalle</Button>
+            <Button variant="outline-primary" aria-label={`Abrir ${item.nombre} en la página de detalle `}>Ver detalle</Button>
           </Link>
           &nbsp;
           <Link to={`/categories/${item.categoria}`}>
-            <Button className="text-capitalize" variant="outline-primary">{item.categoria}</Button>
+            <Button className="text-capitalize" variant="outline-primary" aria-label={`Abrir la página de detalle de la categoría ${item.categoria}`}>{item.categoria}</Button>
           </Link>
         </Card.Footer>
       </Card>

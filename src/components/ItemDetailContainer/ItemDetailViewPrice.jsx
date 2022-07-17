@@ -1,36 +1,70 @@
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
-import Form from "react-bootstrap/Form";
+
 import Badge from "react-bootstrap/Badge";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
 import { StarFill, BoxSeam } from "react-bootstrap-icons";
+import ItemCount from "./ItemCount";
+import { useContext } from "react";
+import { CartContext } from "../Context/CartContext/CarritoContext";
+import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const ItemViewPrice = ({ product }) => {
+  const [cart, addToCart] = useContext(CartContext);
+  const [cantidad, setCantidad] = useState();
+
+  console.log(cart);
+
+  const isFreeShipping = (shippingPrice) => {
+    if (shippingPrice === 0) {
+      return true;
+    } else {
+      return false;
+    }
+  };
+
+  const funcionContador = (contador) => {
+    console.log("el valor del contador es: " + contador);
+    setCantidad(contador);
+
+    const producto = { item: product, quantity: contador}
+    addToCart(producto);
+  };
+
   return (
     <>
       <Row className=" text-center text-lg-start">
-        <Col className="">
+        <Col>
           <section>
             <h1 className="item-title">{product.nombre}</h1>
             <h2 className="item-detail">{product.detalle}</h2>
 
             <Row className="py-1 my-2 d-flex justify-content-around justify-content-lg-start">
-              <Col xs={6} lg={12} className="d-flex justify-content-center justify-content-lg-start">
+              <Col
+                xs={6}
+                lg={12}
+                className="d-flex justify-content-center justify-content-lg-start"
+              >
                 <div className="d-flex align-items-center py-1">
                   <StarFill color="orange" />
                   &nbsp;4.5&nbsp;|&nbsp;<span>123,456 reseñas</span>
                 </div>
               </Col>
-              <Col xs={6} lg={12} className="d-flex justify-content-center justify-content-lg-start">
+              <Col
+                xs={6}
+                lg={12}
+                className="d-flex justify-content-center justify-content-lg-start"
+              >
                 <div className="pt-1" style={{ width: 90 }}>
                   <OverlayTrigger
                     key="bottom"
                     placement="right"
                     overlay={
                       <Tooltip id="right">
-                        <strong>{product.disponible}</strong>&nbsp;unidades en stock
+                        <strong>{product.stock}</strong>&nbsp;unidades en stock
                       </Tooltip>
                     }
                   >
@@ -43,13 +77,18 @@ const ItemViewPrice = ({ product }) => {
               </Col>
             </Row>
 
-            <Badge bg="success" className="p-2 item-eligibility">
-              ¡Este producto es elegible para envío gratis!
+            <Badge
+              bg={isFreeShipping(product.envio) ? "success" : "secondary"}
+              className="p-2 item-eligibility"
+            >
+              {isFreeShipping(product.envio)
+                ? "Este producto tiene envío gratis"
+                : `Costo de envío: $${product.envio}`}
             </Badge>
 
             <div className="mt-3 p-0 pb-0">
               <div className="item-price mx-sm-auto mx-lg-0">
-                <h3>
+                <h3 className="my-auto py-1">
                   ${product.precio}&nbsp;{product.divisa}
                 </h3>
               </div>
@@ -64,21 +103,18 @@ const ItemViewPrice = ({ product }) => {
 
             <hr />
 
-            <Row className="py-1 my-1 d-flex align-items-center">
-              <label htmlFor="qtty_product">Cantidad:</label>
-              <Col xs={4} className="">
-                <Form.Select className="mt-1" id="qtty_product">
-                  <option value="1">999</option>
-                  <option value="2">2</option>
-                  <option value="3">3</option>
-                </Form.Select>
-              </Col>
-              <Col xs={8}>
-                <Button variant="primary" className="w-100 my-2 p-2">
-                  Añadir al carrito
-                </Button>
-              </Col>
-            </Row>
+            {cantidad ? (
+              <Link to="/cart">
+                <Button variant="primary">Terminar compra</Button>
+              </Link>
+            ) : (
+              <ItemCount
+                stock={product.stock}
+                initial={1}
+                onAdd={funcionContador}
+                productName={product.nombre}
+              />
+            )}
           </section>
         </Col>
       </Row>
