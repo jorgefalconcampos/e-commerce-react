@@ -14,7 +14,7 @@ import CartCheckFill from "react-bootstrap-icons/dist/icons/cart-check-fill";
 import XSquareFill from "react-bootstrap-icons/dist/icons/x-square-fill";
 
 const ItemDetailViewPrice = ({ product }) => {
-  const [cart, addToCart, removeFromCart, clearCart] = useContext(CartContext);
+  const [, cart, addToCart, removeFromCart, clearCart, updateCartBadgeNumber] = useContext(CartContext);
   const [cantidad, setCantidad] = useState();
   const [addAgain, setAddAgain] = useState(false);
 
@@ -35,11 +35,15 @@ const ItemDetailViewPrice = ({ product }) => {
     const producto = { item: product, quantity: contador };
     addToCart(producto);
     setAddAgain(false);
+
+    // updateCartBadgeNumber(contador);
   };
 
   const quitarItemDelCarrito = () => {
     setAddAgain(true);
     removeFromCart(product.id);
+    // console.log(cart.i)
+    // updateCartBadgeNumber()
   };
 
   const eliminarCarrito = () => {
@@ -124,7 +128,6 @@ const ItemDetailViewPrice = ({ product }) => {
                       <CartCheckFill></CartCheckFill>
                     </Button>
                   </Link>
-                  {/* <Button className="mx-1" variant="danger">Quitar del carrito</Button> */}
 
                   <OverlayTrigger
                     key="bottom"

@@ -5,13 +5,13 @@ import Row from "react-bootstrap/Row";
 import Button from "react-bootstrap/Button";
 import Image from "react-bootstrap/Image";
 import welcome from "../../static/images/ouch-illustrations/welcome.png";
-import EventsAndContext from "./EventsAndContext";
+// import EventsAndContext from "./EventsAndContext";
 
 const Home = () => {
   return (
     <Container className="">
 
-      <EventsAndContext/>
+      {/* <EventsAndContext/> */}
 
       <Row className="d-flex justify-content-center py-4">
         <Col xs={12} className="pb-2 text-center">

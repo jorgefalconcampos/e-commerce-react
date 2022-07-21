@@ -4,6 +4,7 @@ export const CartContext = createContext();
 
 export const CartProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
+  const [cartBadgeCount, setCartBadgeCount] = useState(0);
 
   const addToCart = (obj) => {
     /* el objeto "obj" viene de "ItemDetailViewPrice" y es algo como:
@@ -12,11 +13,15 @@ export const CartProvider = ({ children }) => {
 
     if (isInCart(itemID)) {
       let item = cart.find((i) => i.item.id === itemID);
-      item.quantity += obj.quantity; /* si ya está en la carta solo actualizamos la cantidad */
+      item.quantity +=
+        obj.quantity; /* si ya está en el carrito solo actualizamos la cantidad */
+      // setCartBadgeCoount(item.quantity)
     } else {
       // setCart(obj)
       cart.push(obj);
     }
+
+    updateCartBadgeNumber();
   };
 
   const isInCart = (id) => {
@@ -34,23 +39,68 @@ export const CartProvider = ({ children }) => {
       }
     }
   };
-  
+
   const removeFromCart = (id) => {
     /* filtramos los items con IDs diferentes al que recibe esta función.
     Esto crea un array nuevo, excluyendo al item que tiene un ID coincidente 
     con el valor del parámetro "id" de esta función. 
     Finalmente, pasamos ese array a la función "setCart" */
-    setCart(cart.filter((i => i.item.id !== id)));
-  };
-  
-  const clearCart = () => {
-    /* Limpiamos el carrito pasando un array vacío a la función "setCart" */
-    console.log("Carrito limpiado")
-    setCart([])
+    setCart(cart.filter((i) => i.item.id !== id));
+    updateCartBadgeNumber(id);
   };
 
+  const clearCart = () => {
+    /* Limpiamos el carrito pasando un array vacío a la función "setCart" */
+    console.log("Carrito limpiado");
+    setCart([]);
+    setCartBadgeCount(0);
+    // updateCartBadgeNumberk();
+  };
+
+  const updateCartBadgeNumber = (id) => {
+    if (id !== undefined) {
+      // resta items del carrito, según su ID
+      let item = cart.find((i) => i.item.id === id);
+      setCartBadgeCount(cartBadgeCount - item.quantity);
+    } else {
+      // suma items al carrito
+      for (let i = 0; i < cart.length; i++) {
+        if (cart[i].quantity) {
+          setCartBadgeCount(cartBadgeCount + cart[i].quantity);
+        }
+      }
+    }
+  };
+
+  function queryLocalStorage(clave) {
+    if (localStorage.getItem(clave) === null) {
+      return false;
+    } else {
+      return localStorage.getItem(clave);
+    }
+  }
+
+  function saveLocalStorage(clave, valor) {
+    if (localStorage.getItem(clave) === null && clave != "cart") {
+      // no existe en localStorage, entonces lo creamos
+      localStorage.setItem(clave, 1);
+    } else {
+      // si ya existe en localStorage, lo actualizamos
+      localStorage.setItem(clave, valor);
+    }
+  }
+
   return (
-    <CartContext.Provider value={[cart, addToCart, removeFromCart, clearCart]}>
+    <CartContext.Provider
+      value={[
+        cartBadgeCount,
+        cart,
+        addToCart,
+        removeFromCart,
+        clearCart,
+        updateCartBadgeNumber,
+      ]}
+    >
       {children}
     </CartContext.Provider>
   );
