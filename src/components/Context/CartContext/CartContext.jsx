@@ -50,11 +50,11 @@ export const CartProvider = ({ children }) => {
   };
 
   const clearCart = () => {
-    /* Limpiamos el carrito pasando un array vacío a la función "setCart" */
     console.log("Carrito limpiado");
+    /* Limpiamos el carrito pasando un array vacío a la función "setCart" */
     setCart([]);
+    /* Limpiamos el número del Badge poniéndolo en 0 */
     setCartBadgeCount(0);
-    // updateCartBadgeNumberk();
   };
 
   const updateCartBadgeNumber = (id) => {
