@@ -31,22 +31,18 @@ const ItemDetailViewPrice = ({ product }) => {
   const funcionContador = (contador) => {
     console.log("el valor del contador es: " + contador);
     setCantidad(contador);
-
     const producto = { item: product, quantity: contador };
     addToCart(producto);
     setAddAgain(false);
-
-    // updateCartBadgeNumber(contador);
   };
 
   const quitarItemDelCarrito = () => {
     setAddAgain(true);
     removeFromCart(product.id);
-    // console.log(cart.i)
-    // updateCartBadgeNumber()
   };
 
   const eliminarCarrito = () => {
+    setAddAgain(true);
     clearCart();
   };
 

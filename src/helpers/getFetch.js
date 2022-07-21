@@ -29,7 +29,7 @@ let productos = [
     medidas: "29x12x90cm",
     estado: "usado",
     precio: 790,
-    envio: 300,
+    envio: 0,
     divisa: "MXN",
     stock: 12,
     img: [ articulos.art2_img1, articulos.art2_img2 ]

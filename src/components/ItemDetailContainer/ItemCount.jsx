@@ -35,7 +35,7 @@ const ItemCount = ({ stock, initial, onAdd, productName }) => {
   return (
     <>
       <Row className="py-1 my-1 d-flex align-items-center">
-        <label htmlFor="qtty_input">Cantidad</label>
+        <label htmlFor="qtty_input">Cantidad:</label>
         <Col xs={5}>
           <InputGroup className="mt-1">
             <Button

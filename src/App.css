@@ -123,6 +123,10 @@
   color: #2f8cff !important;
 }
 
+.cart-sm-img {
+  max-width: 120px;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
