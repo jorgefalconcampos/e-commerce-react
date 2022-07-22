@@ -4,7 +4,7 @@ import Badge from "react-bootstrap/Badge";
 import { CartContext } from "../Context/CartContext/CartContext";
 
 const CartWidget = () => {
-  const [cartBadgeCount] = useContext(CartContext);
+  const { cartBadgeCount } = useContext(CartContext);
 
   return (
     <>

@@ -9,7 +9,7 @@ import { CartContext } from "../../Context/CartContext/CartContext";
 import { Link } from "react-router-dom";
 
 const CartDetail = () => {
-  const [, cart] = useContext(CartContext);
+  const { cart } = useContext(CartContext);
 
   return (
     <Container fluid className="">

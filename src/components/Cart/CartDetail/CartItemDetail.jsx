@@ -10,7 +10,7 @@ import { useContext } from "react";
 import { CartContext } from "../../Context/CartContext/CartContext";
 
 const CartItemDetail = ({ product }) => {
-  const [, , , removeFromCart] = useContext(CartContext);
+  const { removeFromCart } = useContext(CartContext);
 
   const removeItemFromCart = () => {
     removeFromCart(product.item.id);

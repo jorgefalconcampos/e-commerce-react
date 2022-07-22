@@ -2,8 +2,13 @@ import Card from "react-bootstrap/Card";
 import ListGroup from "react-bootstrap/ListGroup";
 import Badge from "react-bootstrap/Badge";
 import Button from "react-bootstrap/Button";
+import { useContext } from "react";
+import { CartContext } from "../../Context/CartContext/CartContext";
 
 const CartSummaryDetail = () => {
+
+  const { calcularTotal } = useContext(CartContext)
+
   return (
     <Card className="text-center my-3">
       <Card.Header>

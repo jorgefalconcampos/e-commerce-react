@@ -14,7 +14,7 @@ import CartCheckFill from "react-bootstrap-icons/dist/icons/cart-check-fill";
 import XSquareFill from "react-bootstrap-icons/dist/icons/x-square-fill";
 
 const ItemDetailViewPrice = ({ product }) => {
-  const [, cart, addToCart, removeFromCart, clearCart, updateCartBadgeNumber] = useContext(CartContext);
+  const { cart, addToCart, removeFromCart, clearCart } = useContext(CartContext);
   const [cantidad, setCantidad] = useState();
   const [addAgain, setAddAgain] = useState(false);
 

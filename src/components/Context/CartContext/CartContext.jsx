@@ -5,6 +5,7 @@ export const CartContext = createContext();
 export const CartProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
   const [cartBadgeCount, setCartBadgeCount] = useState(0);
+  const [total, setTotal] = useState(0);
 
   const addToCart = (obj) => {
     /* el objeto "obj" viene de "ItemDetailViewPrice" y es algo como:
@@ -15,13 +16,14 @@ export const CartProvider = ({ children }) => {
       let item = cart.find((i) => i.item.id === itemID);
       item.quantity +=
         obj.quantity; /* si ya está en el carrito solo actualizamos la cantidad */
+
       // setCartBadgeCoount(item.quantity)
     } else {
       // setCart(obj)
       cart.push(obj);
     }
 
-    updateCartBadgeNumber();
+    updateCartBadgeNumber(null, obj.quantity);
   };
 
   const isInCart = (id) => {
@@ -57,8 +59,8 @@ export const CartProvider = ({ children }) => {
     setCartBadgeCount(0);
   };
 
-  const updateCartBadgeNumber = (id) => {
-    if (id !== undefined) {
+  const updateCartBadgeNumber = (id, qtty) => {
+    if ((id !== undefined) && (id !== null)) {
       // resta items del carrito, según su ID
       let item = cart.find((i) => i.item.id === id);
       setCartBadgeCount(cartBadgeCount - item.quantity);
@@ -66,10 +68,21 @@ export const CartProvider = ({ children }) => {
       // suma items al carrito
       for (let i = 0; i < cart.length; i++) {
         if (cart[i].quantity) {
-          setCartBadgeCount(cartBadgeCount + cart[i].quantity);
+          setCartBadgeCount(cartBadgeCount + qtty);
         }
       }
     }
+  };
+
+  const calcularTotal = () => {
+    // let sum = 0;
+
+    // cart.forEach(el => {
+    //   sum += el.item.precio;
+    // })
+    total = 123;
+
+    setTotal(total);
   };
 
   function queryLocalStorage(clave) {
@@ -92,8 +105,16 @@ export const CartProvider = ({ children }) => {
 
   return (
     <CartContext.Provider
-      value={[cartBadgeCount, cart, addToCart, removeFromCart, 
-        clearCart, updateCartBadgeNumber, ]} >
+      value={{
+        cartBadgeCount,
+        cart,
+        addToCart,
+        removeFromCart,
+        clearCart,
+        updateCartBadgeNumber,
+        calcularTotal,
+      }}
+    >
       {children}
     </CartContext.Provider>
   );
