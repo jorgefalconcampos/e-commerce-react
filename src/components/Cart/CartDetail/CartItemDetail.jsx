@@ -8,6 +8,7 @@ import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
 import { useContext } from "react";
 import { CartContext } from "../../Context/CartContext/CartContext";
+import { Link } from "react-router-dom";
 
 const CartItemDetail = ({ product }) => {
   const { removeFromCart } = useContext(CartContext);
@@ -25,16 +26,20 @@ const CartItemDetail = ({ product }) => {
         lg={2}
         className="py-2 text-center text-lg-start"
       >
-        <Image
-          src={product.item.img[0]}
-          className="rounded cart-sm-img"
-        ></Image>
+        <Link to={`/detail/${product.item.id}`}>
+          <Image
+            src={product.item.img[0]}
+            className="rounded cart-sm-img"
+          ></Image>
+        </Link>
       </Col>
       <Col xs={12} sm={8} md={8} lg={7} className="text-sm-start text-center">
-        <h3>
-          {product.item.nombre}&nbsp;
-          <small className="text-muted">({product.item.estado})</small>
-        </h3>
+        <Link to={`/detail/${product.item.id}`}>
+          <h3>
+            {product.item.nombre}&nbsp;
+            <small className="text-muted">({product.item.estado})</small>
+          </h3>
+        </Link>
         <span className="lead">{product.item.detalle}</span>
         <p className="pt-2">
           <b>
