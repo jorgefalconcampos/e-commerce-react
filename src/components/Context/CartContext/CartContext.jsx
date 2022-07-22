@@ -72,17 +72,17 @@ export const CartProvider = ({ children }) => {
         }
       }
     }
+    calcularTotal();
   };
 
   const calcularTotal = () => {
-    // let sum = 0;
-
-    // cart.forEach(el => {
-    //   sum += el.item.precio;
-    // })
-    total = 123;
-
-    setTotal(total);
+    let sum = 0;
+    cart.forEach(el => {
+      // price per item, including repeated
+      let price_per_item = el.item.precio * el.quantity;
+      sum += price_per_item
+      setTotal(sum)
+    })
   };
 
   function queryLocalStorage(clave) {
@@ -112,7 +112,7 @@ export const CartProvider = ({ children }) => {
         removeFromCart,
         clearCart,
         updateCartBadgeNumber,
-        calcularTotal,
+        total,
       }}
     >
       {children}

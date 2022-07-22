@@ -7,7 +7,7 @@ import { CartContext } from "../../Context/CartContext/CartContext";
 
 const CartSummaryDetail = () => {
 
-  const { calcularTotal } = useContext(CartContext)
+  const { cartBadgeCount, total } = useContext(CartContext)
 
   return (
     <Card className="text-center my-3">
@@ -19,9 +19,9 @@ const CartSummaryDetail = () => {
       <ListGroup variant="flush">
         <ListGroup.Item className="d-flex justify-content-between align-items-center">
           <div className="ms-1 me-auto">
-            <strong>Subtotal</strong>&nbsp;(999)&nbsp;
+            <strong>Subtotal</strong>&nbsp;({cartBadgeCount})&nbsp;
           </div>
-          <span>$999,999,000</span>
+          <span>${total}</span>
         </ListGroup.Item>
         <ListGroup.Item className="d-flex justify-content-between align-items-center">
           <div className="ms-1 me-auto">
@@ -35,10 +35,10 @@ const CartSummaryDetail = () => {
           <div className="ms-1 me-auto">
             <strong>TOTAL</strong>
           </div>
-          <span>$400</span>
+          <span>${total}</span>
         </ListGroup.Item>
         <ListGroup.Item>
-          <Button variant="primary" className="w-100 my-2 p-2">
+          <Button variant="primary" className="w-100 my-2 p-2" aria-label={`Procesar compra, total: ${total}`}>
             Procesar compra
           </Button>
         </ListGroup.Item>
