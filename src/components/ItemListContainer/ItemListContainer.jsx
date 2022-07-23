@@ -8,6 +8,8 @@ import {
   collection,
   doc,
   getDoc,
+  query,
+  where,
   getDocs,
   getFirestore,
 } from "firebase/firestore";
@@ -33,7 +35,8 @@ const ItemListContainer = () => {
   useEffect(() => {
     const db = getFirestore();
     const queryCollection = collection(db, "items");
-    getDocs(queryCollection)
+    const queryCollectionFilter = query(queryCollection, where('disponible', '==', true));
+    getDocs(queryCollectionFilter)
       .then(
         (resp) =>
           setProducts(
@@ -43,7 +46,7 @@ const ItemListContainer = () => {
       )
       .catch((err) => console.log(err))
       .finally(() => setLoading(false));
-  }, [categoryName]);
+  }, []);
 
   console.log(products);
 

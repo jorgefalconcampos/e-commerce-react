@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { getFetch } from "../../helpers/getFetch";
+// import { getFetch } from "../../helpers/getFetch";
 import LoadingScreen from "../General/LoadingScreens/SpinnerLoading";
 import ItemDetail from "./ItemDetail";
 import Container from "react-bootstrap/Container";
@@ -16,7 +16,6 @@ const ItemDetailContainer = () => {
     const queryProduct = doc(db, "items", productId);
     getDoc(queryProduct)
       .then((resp) => setProduct({ id: resp.id, ...resp.data() }))
-
       .catch((err) => console.log(err))
       .finally(() => setLoading(false));
   }, [productId]);
@@ -30,7 +29,7 @@ const ItemDetailContainer = () => {
   //     .finally(() => setLoading(false));
   // }, [productId]);
 
-  console.log(productId);
+  console.log(product);
 
   return (
     <>
