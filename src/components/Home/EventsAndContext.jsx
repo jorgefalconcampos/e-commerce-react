@@ -44,7 +44,7 @@ const EventsAndContext = () => {
 
     setTimeout(() => {
       setIsLoading(false);
-    }, 1000);
+    }, 3000);
 
     e.target[0].value = "";
     setValue("");

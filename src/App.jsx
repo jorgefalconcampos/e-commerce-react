@@ -18,6 +18,9 @@ import Footer from "./components/Footer/Footer";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
+// te quedaste en 3:37:59
+// https://coderhouse.zoom.us/rec/play/aI4qVttXYuNmvNjXRdjvfzSM9lIyYpwVB0Qh6Tor7wKkuxwtgQ7gggXLPLIkkMckI3fpnBzcFEFBpzr6.ZtGXSvq6jG-zzNIS?continueMode=true&_x_zm_rtaid=QJDYDqRSSmitkA6bJ8tXsA.1658538425728.6324efa18049943f493acd718c0eb72b&_x_zm_rhtaid=251
+
 function App() {
   return (
     <BrowserRouter>
