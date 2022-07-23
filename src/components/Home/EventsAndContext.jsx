@@ -9,8 +9,6 @@ import { useState } from "react";
 import axios from "axios";
 
 const EventsAndContext = () => {
-  // te quedaste en 3:29:30
-  //https://coderhouse.zoom.us/rec/play/Y27pjWVnthj6Y7JYFQ0_ZOOKRngmElE_tDNJbp70b7BhAfxWH960kHJFCla62-H87zBM9u2xPu0awWIl.dbWLulQYWEIJsP3B?continueMode=true&_x_zm_rtaid=F-onLsOWTIWxsYigC4Fbsg.1657424590264.a9ccce0a7d9b4c67c8f253cab0333f94&_x_zm_rhtaid=336
 
   const [value, setValue] = useState("");
   const [user, setUser] = useState({});
