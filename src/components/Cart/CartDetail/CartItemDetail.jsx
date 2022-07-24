@@ -3,7 +3,7 @@ import Col from "react-bootstrap/Col";
 import Image from "react-bootstrap/Image";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-import Trash3Fill from "react-bootstrap-icons/dist/icons/trash3-fill";
+import XSquareFill from "react-bootstrap-icons/dist/icons/x-square-fill";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
 import { useContext } from "react";
@@ -27,10 +27,11 @@ const CartItemDetail = ({ product }) => {
         className="py-2 text-center text-lg-start"
       >
         <Link to={`/detail/${product.item.id}`}>
-          <Image
+          <img
             src={product.item.img[0]}
             className="rounded cart-sm-img"
-          ></Image>
+            alt=""
+          />
         </Link>
       </Col>
       <Col xs={12} sm={8} md={8} lg={7} className="text-sm-start text-center">
@@ -86,12 +87,12 @@ const CartItemDetail = ({ product }) => {
             >
               <Button
                 onClick={removeItemFromCart}
-                variant="danger"
+                variant="warning"
                 className="my-2"
-                aria-label={`Eliminar ${product.item.nombre} de tu carrito`}
+                aria-label={`Quitar ${product.item.nombre} de tu carrito`}
               >
-                <span>Eliminar</span>&nbsp;
-                <Trash3Fill></Trash3Fill>
+                <span>Quitar</span>&nbsp;
+                <XSquareFill></XSquareFill>
               </Button>
             </OverlayTrigger>
           </Col>

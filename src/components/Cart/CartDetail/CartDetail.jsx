@@ -6,10 +6,16 @@ import CartItemDetail from "./CartItemDetail";
 import CartSummaryDetail from "./CartSummaryDetail";
 import { useContext } from "react";
 import { CartContext } from "../../Context/CartContext/CartContext";
+import Trash3Fill from "react-bootstrap-icons/dist/icons/trash3-fill";
 import { Link } from "react-router-dom";
 
 const CartDetail = () => {
-  const { cart } = useContext(CartContext);
+  const { cartBadgeCount, cart, clearCart } = useContext(CartContext);
+
+  const eliminarCarrito = () => {
+    clearCart();
+  };
+
 
   return (
     <Container fluid className="">
@@ -19,7 +25,18 @@ const CartDetail = () => {
             {/* detalle de artículos */}
             <Col sm={11} md={8} lg={9} className="">
               <section id="products_section">
-                <h1 className="pt-2"> Tu carrito de compras</h1>
+                <div className="d-flex justify-content-between align-items-center">
+                  <h1 className="pt-2"> Tu carrito de compras</h1>
+                  <Button
+                    onClick={eliminarCarrito}
+                    variant="danger"
+                    className="my-2"
+                    aria-label={`Limpiar todo tu carrito (${cartBadgeCount} elementos)`}
+                  >
+                    <span>Limpiar carrito</span>&nbsp;
+                    <Trash3Fill></Trash3Fill>
+                  </Button>
+                </div>
                 <hr></hr>
                 {cart.map((product) => (
                   <Row

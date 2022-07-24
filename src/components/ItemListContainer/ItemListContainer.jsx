@@ -1,18 +1,9 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { getFetch } from "../../helpers/getFetch";
 import LoadingScreen from "../General/LoadingScreens/SpinnerLoading";
 import ItemList from "./ItemList";
 import Container from "react-bootstrap/Container";
-import {
-  collection,
-  doc,
-  getDoc,
-  query,
-  where,
-  getDocs,
-  getFirestore,
-} from "firebase/firestore";
+import { collection, query, where, getDocs, getFirestore } from "firebase/firestore";
 
 const ItemListContainer = () => {
   const [products, setProducts] = useState([]);
@@ -24,18 +15,19 @@ const ItemListContainer = () => {
   useEffect(() => {
     const db = getFirestore();
     const queryCollection = collection(db, "items");
-    const queryCollectionFilter = query(queryCollection, where('disponible', '==', true));
+    let queryCollectionFilter;
+
+    categoryName
+      ? (queryCollectionFilter = query(queryCollection, where("categoria", "==", categoryName), where("disponible", "==", true)))
+      : (queryCollectionFilter = query(queryCollection, where("disponible", "==", true)));
+
     getDocs(queryCollectionFilter)
-      .then(
-        (resp) =>
-          setProducts(
-            resp.docs.map((prod) => ({ id: prod.id, ...prod.data() }))
-          )
-        // setProduct({ id: resp.id, ...resp.data() })
+      .then((resp) =>
+        setProducts(resp.docs.map((prod) => ({ id: prod.id, ...prod.data() })))
       )
       .catch((err) => console.log(err))
       .finally(() => setLoading(false));
-  }, []);
+  }, [categoryName]);
 
   console.log(products);
 
