@@ -26,6 +26,11 @@ const NavBar = () => {
       to: "/categories/papel",
       name: "papel",
     },
+    {
+      className: linkClasses,
+      to: "/categories/piedra",
+      name: "piedra",
+    },
   ];
 
   const isLinkActive = (isActive) => {
