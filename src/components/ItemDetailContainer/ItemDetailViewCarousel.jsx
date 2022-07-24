@@ -1,3 +1,4 @@
+// componentes
 import Carousel from "react-bootstrap/Carousel";
 import Image from "react-bootstrap/Image";
 

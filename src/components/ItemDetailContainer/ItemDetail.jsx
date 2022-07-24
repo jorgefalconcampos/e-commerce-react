@@ -1,3 +1,4 @@
+// componentes
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
@@ -6,7 +7,6 @@ import ItemDetailViewCarousel from "./ItemDetailViewCarousel";
 import Breadcrumb from "react-bootstrap/Breadcrumb";
 
 const ItemDetail = ({ item }) => {
-  // console.log(item);
   return (
     <Container className="py-2">
       <Breadcrumb className="mx-5">
@@ -21,7 +21,6 @@ const ItemDetail = ({ item }) => {
           <ItemDetailViewCarousel product={item}/>
         </Col>
         <Col lg={5}>
-          {/* ItemDetailViewPrice es el equivalente a ItemDetail */}
           <ItemDetailViewPrice product={item}/>
         </Col>
       </Row>

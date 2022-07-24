@@ -1,17 +1,18 @@
+// librerías/dependencias
+import { useContext, useState } from "react";
+import { Link } from "react-router-dom";
+// context & providers
+import { CartContext } from "../Context/CartContext/CartContext";
+// componentes
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import Badge from "react-bootstrap/Badge";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
-import { StarFill, BoxSeam } from "react-bootstrap-icons";
 import ItemCount from "./ItemCount";
-import { useContext, useState } from "react";
-import { CartContext } from "../Context/CartContext/CartContext";
-import { Link } from "react-router-dom";
-import Trash3Fill from "react-bootstrap-icons/dist/icons/trash3-fill";
-import CartCheckFill from "react-bootstrap-icons/dist/icons/cart-check-fill";
-import XSquareFill from "react-bootstrap-icons/dist/icons/x-square-fill";
+// estilos, iconos, imágenes, etc
+import { StarFill, BoxSeam, XSquareFill, CartCheckFill, Trash3Fill } from "react-bootstrap-icons";
 
 const ItemDetailViewPrice = ({ product }) => {
   const { cart, addToCart, removeFromCart, clearCart } = useContext(CartContext);

@@ -1,9 +1,11 @@
+// librerías/dependencias
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import LoadingScreen from "../General/LoadingScreens/SpinnerLoading";
+import { collection, query, where, getDocs, getFirestore } from "firebase/firestore";
+// componentes
 import ItemList from "./ItemList";
 import Container from "react-bootstrap/Container";
-import { collection, query, where, getDocs, getFirestore } from "firebase/firestore";
+import LoadingScreen from "../General/LoadingScreens/SpinnerLoading";
 
 const ItemListContainer = () => {
   const [products, setProducts] = useState([]);

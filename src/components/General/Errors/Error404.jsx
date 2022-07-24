@@ -1,8 +1,9 @@
-import Container from "react-bootstrap/Container";
+// componentes
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import Button from "react-bootstrap/Button";
+import Container from "react-bootstrap/Container";
 import Image from "react-bootstrap/Image";
+// estilos, iconos, imágenes, etc
 import error404 from "../../../static/images/ouch-illustrations/error404.png";
 
 const Error404 = () => {

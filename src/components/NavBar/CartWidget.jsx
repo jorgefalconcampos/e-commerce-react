@@ -1,7 +1,11 @@
+// librerías/dependencias
 import { useContext } from "react";
-import { Cart } from "react-bootstrap-icons";
-import Badge from "react-bootstrap/Badge";
+// context & providers
 import { CartContext } from "../Context/CartContext/CartContext";
+// componentes
+import Badge from "react-bootstrap/Badge";
+// estilos, iconos, imágenes, etc
+import Cart from "react-bootstrap-icons/dist/icons/cart";
 
 const CartWidget = () => {
   const { cartBadgeCount } = useContext(CartContext);

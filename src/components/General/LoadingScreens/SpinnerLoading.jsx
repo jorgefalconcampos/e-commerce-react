@@ -1,6 +1,7 @@
-import Container from "react-bootstrap/Container"
+// componentes
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import Container from "react-bootstrap/Container"
 import Stack from "react-bootstrap/Stack";
 import Spinner from 'react-bootstrap/Spinner';
 

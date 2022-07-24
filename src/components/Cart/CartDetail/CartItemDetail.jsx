@@ -1,14 +1,17 @@
+// librerías/dependencias
+import { Link } from "react-router-dom";
+import { useContext } from "react";
+// context & providers
+import { CartContext } from "../../Context/CartContext/CartContext";
+// componentes
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import Image from "react-bootstrap/Image";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-import XSquareFill from "react-bootstrap-icons/dist/icons/x-square-fill";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
-import { useContext } from "react";
-import { CartContext } from "../../Context/CartContext/CartContext";
-import { Link } from "react-router-dom";
+// estilos, iconos, imágenes, etc
+import XSquareFill from "react-bootstrap-icons/dist/icons/x-square-fill";
 
 const CartItemDetail = ({ product }) => {
   const { removeFromCart } = useContext(CartContext);

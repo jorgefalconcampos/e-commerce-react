@@ -1,9 +1,11 @@
+// librerías/dependencias
+import { useState } from "react";
+// componentes
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import InputGroup from "react-bootstrap/InputGroup";
 import Button from "react-bootstrap/Button";
+import InputGroup from "react-bootstrap/InputGroup";
 import Form from "react-bootstrap/Form";
-import { useState } from "react";
 
 const ItemCount = ({ stock, initial, onAdd, productName }) => {
   const [value, setValue] = useState(initial);

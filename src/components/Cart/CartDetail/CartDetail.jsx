@@ -1,13 +1,17 @@
-import Container from "react-bootstrap/Container";
-import Col from "react-bootstrap/Col";
+// librerías/dependencias
+import { Link } from "react-router-dom";
+import { useContext } from "react";
+// context & providers
+import { CartContext } from "../../Context/CartContext/CartContext";
+// componentes
 import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
 import CartItemDetail from "./CartItemDetail";
 import CartSummaryDetail from "./CartSummaryDetail";
-import { useContext } from "react";
-import { CartContext } from "../../Context/CartContext/CartContext";
+// estilos, iconos, imágenes, etc
 import Trash3Fill from "react-bootstrap-icons/dist/icons/trash3-fill";
-import { Link } from "react-router-dom";
 
 const CartDetail = () => {
   const { cartBadgeCount, cart, clearCart } = useContext(CartContext);
@@ -15,7 +19,6 @@ const CartDetail = () => {
   const eliminarCarrito = () => {
     clearCart();
   };
-
 
   return (
     <Container fluid className="">
