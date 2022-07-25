@@ -9,8 +9,7 @@ import ListGroup from "react-bootstrap/ListGroup";
 import Badge from "react-bootstrap/Badge";
 
 const CartSummaryDetail = () => {
-
-  const { cartBadgeCount, total } = useContext(CartContext)
+  const { cartBadgeCount, total, totalEnvios } = useContext(CartContext);
 
   return (
     <Card className="text-center my-3">
@@ -24,15 +23,21 @@ const CartSummaryDetail = () => {
           <div className="ms-1 me-auto">
             <strong>Subtotal</strong>&nbsp;({cartBadgeCount})&nbsp;
           </div>
-          <span>${total}</span>
+          <span>${total-totalEnvios}</span>
         </ListGroup.Item>
         <ListGroup.Item className="d-flex justify-content-between align-items-center">
           <div className="ms-1 me-auto">
             <strong>Envío</strong>
           </div>
-          <Badge bg="success" className="p-2">
-            ¡Gratis!
-          </Badge>
+          {totalEnvios !== 0 ? (
+            <Badge bg="secondary" className="p-2">
+              ${totalEnvios}
+            </Badge>
+          ) : (
+            <Badge bg="success" className="p-2">
+              ¡Gratis!
+            </Badge>
+          )}
         </ListGroup.Item>
         <ListGroup.Item className="d-flex justify-content-between align-items-center">
           <div className="ms-1 me-auto">
@@ -41,7 +46,11 @@ const CartSummaryDetail = () => {
           <span>${total}</span>
         </ListGroup.Item>
         <ListGroup.Item>
-          <Button variant="primary" className="w-100 my-2 p-2" aria-label={`Procesar compra, total: ${total}`}>
+          <Button
+            variant="primary"
+            className="w-100 my-2 p-2"
+            aria-label={`Procesar compra, total: ${total}`}
+          >
             Procesar compra
           </Button>
         </ListGroup.Item>

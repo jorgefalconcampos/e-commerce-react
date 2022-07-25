@@ -39,16 +39,23 @@ const CartItemDetail = ({ product }) => {
       </Col>
       <Col xs={12} sm={8} md={8} lg={7} className="text-sm-start text-center">
         <Link to={`/detail/${product.item.id}`}>
-          <h3>
+          <h3 className="link-rm">
             {product.item.nombre}&nbsp;
-            <small className="text-muted">({product.item.estado})</small>
+            <small className="item-txt-muted">({product.item.estado})</small>
           </h3>
         </Link>
+        <br></br>
         <span className="lead">{product.item.detalle}</span>
         <p className="pt-2">
           <b>
             ${product.item.precio} {product.item.divisa}
           </b>
+          {Number(product.item.envio) !== 0 ? (
+            <>
+              &nbsp;
+              <span className="item-env">+${product.item.envio} de envío</span>
+            </>
+          ) : null}
         </p>
       </Col>
       <Col

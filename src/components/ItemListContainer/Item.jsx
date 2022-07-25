@@ -31,9 +31,13 @@ const Item = ({ item }) => {
     <Col>
       <Card>
         <div className="item-price-preview">
-          <span className="my-auto ">
-            ${item.precio}&nbsp;{item.divisa}
-          </span>
+          ${item.precio}&nbsp;{item.divisa}
+          {Number(item.envio) !== 0 ? (
+            <>
+              <br></br>
+              <span className="item-env">+${item.envio} de envío</span>
+            </>
+          ) : null}
         </div>
         <Card.Img variant="top" src={item.img[0]} className="card-img-top" />
         <Link
@@ -59,6 +63,9 @@ const Item = ({ item }) => {
                     <Badge className="p-2 bg-dark">{item.categoria}</Badge>
                   </Link>
                 </>
+              ) : null}
+              {Number(item.envio) === 0 ? (
+                <Badge className="mx-2 p-2 bg-success">¡Envío gratis!</Badge>
               ) : null}
             </Col>
 

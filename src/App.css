@@ -94,6 +94,11 @@
   font-size: 0.85rem !important;
 }
 
+.item-txt-muted {
+  font-size: 17px;
+  font-weight: 400;
+}
+
 .item-price {
   border-radius: 5px;
   border-left: 6px solid #428bca !important;
@@ -193,6 +198,11 @@ button {
 .item-cat-detail {
   left: 0 ;
   color: red;
+}
+
+.item-env{
+  font-size: 13px;
+  font-weight: normal;
 }
 
 .card-img-top{

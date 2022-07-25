@@ -6,6 +6,7 @@ export const CartProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
   const [cartBadgeCount, setCartBadgeCount] = useState(0);
   const [total, setTotal] = useState(0);
+  const [totalEnvios, setTotalEnvios] = useState(0)
 
   const addToCart = (obj) => {
     /* el objeto "obj" viene de "ItemDetailViewPrice" y es algo como:
@@ -77,11 +78,14 @@ export const CartProvider = ({ children }) => {
 
   const calcularTotal = () => {
     let sum = 0;
+    let envios = 0;
     cart.forEach(el => {
       // price per item, including repeated
-      let price_per_item = el.item.precio * el.quantity;
-      sum += price_per_item
-      setTotal(sum)
+      let price_per_item = Number(el.item.precio) * Number(el.quantity);
+      sum += price_per_item;
+      envios += Number(el.item.envio);
+      setTotalEnvios(envios);
+      setTotal(sum+envios);
     })
   };
 
@@ -113,6 +117,7 @@ export const CartProvider = ({ children }) => {
         clearCart,
         updateCartBadgeNumber,
         total,
+        totalEnvios
       }}
     >
       {children}
