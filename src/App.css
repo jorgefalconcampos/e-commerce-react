@@ -101,7 +101,19 @@
   padding: 0.65em 10px;
   margin: 0.75rem 0rem !important;
   width: 60% !important;
+}
 
+.item-price-preview {
+  position: absolute;
+  font-weight: bold;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  right: 0px;
+  border-right: 4px solid #428bca !important;
+  background-color: #e1f1ff;
+  padding: 0.45em 10px;
+  margin: 0.75rem -0.1rem !important;
+  width: 30% !important;
 }
 
 .item-info-title{
@@ -138,4 +150,51 @@
 
 button {
   font-size: calc(10px + 2vmin);
+}
+
+
+ .link-rm {
+  background-image: linear-gradient(
+    to right,
+    #2f8cff,
+    #428bca 50%,
+    #000 50%
+  );
+  background-size: 200% 100%;
+  background-position: -100%;
+  display: inline-block;
+  padding: 5px 0;
+  position: relative;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: all 0.2s ease-in-out;
+}
+
+.link-rm:before {
+  content: '';
+  background: #2f8cff;
+  display: block;
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  transition: all 0.2s ease-in-out;
+}
+
+ .link-rm:hover{
+  background-position: 0;
+}
+
+ .link-rm:hover::before{
+  width: 100%;
+}
+
+.item-cat-detail {
+  left: 0 ;
+  color: red;
+}
+
+.card-img-top{
+  max-height: 300px;
 }

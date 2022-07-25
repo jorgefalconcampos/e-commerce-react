@@ -8,10 +8,12 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
+import Image from "react-bootstrap/Image";
 import CartItemDetail from "./CartItemDetail";
 import CartSummaryDetail from "./CartSummaryDetail";
 // estilos, iconos, imágenes, etc
 import Trash3Fill from "react-bootstrap-icons/dist/icons/trash3-fill";
+import empty from "../../../static/images/ouch-illustrations/empty.png";
 
 const CartDetail = () => {
   const { cartBadgeCount, cart, clearCart } = useContext(CartContext);
@@ -61,14 +63,16 @@ const CartDetail = () => {
           </>
         ) : (
           <>
-            <Col sm={12} className="text-center py-5 my-5">
-              <h1 className="my-5 pb-5">Aún no hay artículos en tu carrito.</h1>
-
+            <Col sm={12} className="text-center my-2">
+              <h1 className="my-5">Aún no hay artículos en tu carrito.</h1>
               <Link to="/products">
-                <Button className="mt-1" size="lg" variant="primary">
+                <Button size="lg" variant="primary">
                   Ir a comprar
                 </Button>
               </Link>
+            </Col>
+            <Col sm={12} className="text-center pb-5">
+              <Image src={empty} width="400" className="mx-auto"></Image>
             </Col>
           </>
         )}

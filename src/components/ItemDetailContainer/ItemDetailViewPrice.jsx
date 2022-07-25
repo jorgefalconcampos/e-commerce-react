@@ -22,7 +22,7 @@ const ItemDetailViewPrice = ({ product }) => {
   console.log(cart);
 
   const isFreeShipping = (shippingPrice) => {
-    if (shippingPrice === 0) {
+    if (Number(shippingPrice) === 0) {
       return true;
     } else {
       return false;
