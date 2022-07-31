@@ -8,19 +8,19 @@ import InputGroup from "react-bootstrap/InputGroup";
 import Form from "react-bootstrap/Form";
 
 const ItemCount = ({ stock, initial, onAdd, productName }) => {
-  const [value, setValue] = useState(initial);
+  // const [value, setValue] = useState(initial);
   const [count, setCount] = useState(initial);
 
-  const onChangeValue = (e) => {
-    setValue(e.target.value);
-  };
+  // const onChangeValue = (e) => {
+  //   setValue(e.target.value);
+  // };
 
-  const onBlur = (e) => {
-    let qtty = e.target.value;
-    if (qtty > stock) {
-      alert(`No puedes agregar ${qtty} items, el máximo es de ${stock}`);
-    }
-  };
+  // const onBlur = (e) => {
+  //   let qtty = e.target.value;
+  //   if (qtty > stock) {
+  //     alert(`No puedes agregar ${qtty} items, el máximo es de ${stock}`);
+  //   }
+  // };
 
   const increment = () => {
     if (count < stock) {
@@ -61,8 +61,8 @@ const ItemCount = ({ stock, initial, onAdd, productName }) => {
               // type="number"
               placeholder={initial}
               value={count || ""}
-              onBlur={onBlur}
-              onChange={onChangeValue}
+              // onBlur={onBlur}
+              // onChange={onChangeValue}
             />
 
             <Button

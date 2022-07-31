@@ -38,13 +38,14 @@ const ItemDetailViewPrice = ({ product }) => {
   };
 
   const quitarItemDelCarrito = () => {
+    console.log("quitarItemDelCarrito")
     setAddAgain(true);
     removeFromCart(product.id);
   };
 
   const eliminarCarrito = () => {
     setAddAgain(true);
-    clearCart();
+    clearCart()
   };
 
   return (
@@ -159,6 +160,9 @@ const ItemDetailViewPrice = ({ product }) => {
               </Row>
             ) : (
               <ItemCount
+                // product={product}
+                // setCantidad={setCantidad}
+                // setAddAgain={setAddAgain}
                 stock={product.stock}
                 initial={1}
                 onAdd={funcionContador}

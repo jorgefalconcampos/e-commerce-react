@@ -24,7 +24,7 @@ export const CartProvider = ({ children }) => {
       cart.push(obj);
     }
 
-    updateCartBadgeNumber(null, obj.quantity);
+    updateCartBadgeNumber(null, Number(obj.quantity));
   };
 
   const isInCart = (id) => {
@@ -44,12 +44,12 @@ export const CartProvider = ({ children }) => {
   };
 
   const removeFromCart = (id) => {
-    /* filtramos los items con IDs diferentes al que recibe esta función.
-    Esto crea un array nuevo, excluyendo al item que tiene un ID coincidente 
-    con el valor del parámetro "id" de esta función. 
-    Finalmente, pasamos ese array a la función "setCart" */
-    setCart(cart.filter((i) => i.item.id !== id));
-    updateCartBadgeNumber(id);
+    let newCart = cart;
+    let index = newCart.findIndex(el => el.item.id === id);
+    let qtty = newCart[index].quantity;
+    newCart.splice(index, 1);
+    setCart(newCart)
+    updateCartBadgeNumber(id, Number(qtty));
   };
 
   const clearCart = () => {
@@ -61,10 +61,10 @@ export const CartProvider = ({ children }) => {
   };
 
   const updateCartBadgeNumber = (id, qtty) => {
+
     if ((id !== undefined) && (id !== null)) {
-      // resta items del carrito, según su ID
-      let item = cart.find((i) => i.item.id === id);
-      setCartBadgeCount(cartBadgeCount - item.quantity);
+      // resta items del carrito
+      setCartBadgeCount(cartBadgeCount - qtty);
     } else {
       // suma items al carrito
       for (let i = 0; i < cart.length; i++) {
@@ -82,6 +82,7 @@ export const CartProvider = ({ children }) => {
     cart.forEach(el => {
       // price per item, including repeated
       let price_per_item = Number(el.item.precio) * Number(el.quantity);
+      console.log(price_per_item);
       sum += price_per_item;
       envios += Number(el.item.envio);
       setTotalEnvios(envios);
