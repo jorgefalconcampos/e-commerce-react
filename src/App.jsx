@@ -9,6 +9,7 @@ import Error404 from "./components/General/Errors/Error404";
 import CartDetail from "./components/Cart/CartDetail/CartDetail";
 import ItemListContainer from "./components/ItemListContainer/ItemListContainer";
 import ItemDetailContainer from "./components/ItemDetailContainer/ItemDetailContainer";
+import Order from "./components/Cart/Order/Order";
 import Footer from "./components/Footer/Footer";
 // estilos, iconos, imágenes, etc
 import "./App.css";
@@ -28,6 +29,7 @@ function App() {
           />
           <Route path="/detail/:productId" element={<ItemDetailContainer />} />
           <Route path="/cart" element={<CartDetail />} />
+          <Route path="/place-order/:orderId" element={< Order/>} />
           <Route path="*" element={<Error404 />} />
         </Routes>
         <Footer />
