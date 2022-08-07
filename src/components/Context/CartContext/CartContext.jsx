@@ -7,6 +7,7 @@ export const CartProvider = ({ children }) => {
   const [cartBadgeCount, setCartBadgeCount] = useState(0);
   const [total, setTotal] = useState(0);
   const [totalEnvios, setTotalEnvios] = useState(0)
+  const [currentOrderID, setCurrentOrderID] = useState(0);
 
   const addToCart = (obj) => {
     /* el objeto "obj" viene de "ItemDetailViewPrice" y es algo como:
@@ -58,7 +59,12 @@ export const CartProvider = ({ children }) => {
     setCart([]);
     /* Limpiamos el número del Badge poniéndolo en 0 */
     setCartBadgeCount(0);
+    setCurrentOrderID(0);
   };
+
+  const setOrderID = (id) => {
+    setCurrentOrderID(id);
+  }
 
   const updateCartBadgeNumber = (id, qtty) => {
 
@@ -118,7 +124,9 @@ export const CartProvider = ({ children }) => {
         clearCart,
         updateCartBadgeNumber,
         total,
-        totalEnvios
+        totalEnvios,
+        currentOrderID,
+        setOrderID,
       }}
     >
       {children}

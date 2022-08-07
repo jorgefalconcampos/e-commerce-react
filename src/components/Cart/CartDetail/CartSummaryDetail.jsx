@@ -9,7 +9,6 @@ import Card from "react-bootstrap/Card";
 import ListGroup from "react-bootstrap/ListGroup";
 import Badge from "react-bootstrap/Badge";
 import Loading from "../../../components/General/Loading/Loading";
-import Alert from "react-bootstrap/Alert";
 import {
   getFirestore,
   addDoc,
@@ -22,19 +21,15 @@ import {
 import LockFill from "react-bootstrap-icons/dist/icons/lock-fill";
 
 const CartSummaryDetail = () => {
-
   let navigate = useNavigate();
 
-  // const [showMessage, setShowMessage] = useState(false);
-  const [orderID, setOrderID] = useState(0);
   const [loading, setLoading] = useState(false);
   // const handleClose = () => setShow(false);
 
-  const { cart, cartBadgeCount, total, totalEnvios, clearCart } =
+  const { cart, cartBadgeCount, total, totalEnvios, setOrderID } =
     useContext(CartContext);
 
   const generarOrden = () => {
-
     setLoading(true);
 
     const order = {};
@@ -45,17 +40,18 @@ const CartSummaryDetail = () => {
       email: "jorge@falcon.com",
     };
 
-    console.log(cart);
+    // console.log(cart);
 
     order.items = cart.map((prod) => {
       const id = prod.item.id;
       const price = Number(prod.item.precio);
       const title = prod.item.nombre;
-      const finished = false;
-      return { id, price, title, finished };
+      return { id, price, title };
     });
 
     order.total = total;
+
+    order.finished = false;
 
     console.log(order);
 
@@ -66,27 +62,23 @@ const CartSummaryDetail = () => {
     addDoc(queryInsertCollection, order)
       .then((resp) => {
         // setTimeout(() => {
-          setLoading(false);
+        setLoading(false);
         // }, 1200);
-        navigate(`/place-order/${resp.id}`)
-        // setOrderID(resp.id);
+        setOrderID(resp.id);
+        navigate(`/place-order/${resp.id}`);
+
         // setShowMessage(true);
       })
-      .catch((err) => console.log(err))
-      // .finally(() => clearCart());
-
-    // actualiza el documento
-    const updateItemCollection = doc(db, "items", orderID);
-    updateDoc(updateItemCollection, {
-      stock: 1100,
-    }).then(() => console.log("Actualizar"));
+      .catch((err) => console.log(err));
+    // .finally(() => clearCart());
 
     // batch update
-    const batch = writeBatch(db);
-    batch.update();
+    // const batch = writeBatch(db);
+    // batch.update();
 
-    batch.commit();
+    // batch.commit();
   };
+
 
   return (
     <>
