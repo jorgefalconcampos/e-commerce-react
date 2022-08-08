@@ -196,8 +196,14 @@ button {
 }
 
 .item-cat-detail {
-  left: 0 ;
-  color: red;
+  display: flex;
+  /* justify-content: flex-end; */
+  right: 0;
+  color: #ff0000;
+  font-size: 14px;
+  margin: 0.35rem 0 0 0.35rem;
+  /* margin-left: 0.55rem; */
+  font-weight: 700;
 }
 
 .item-env{

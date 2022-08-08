@@ -17,15 +17,19 @@ import LoadingScreen from "../../General/LoadingScreens/SpinnerLoading";
 import {
   getFirestore,
   addDoc,
+  query,
   collection,
   doc,
+  where,
   getDoc,
   updateDoc,
   writeBatch,
+  documentId,
+  getDocs,
 } from "firebase/firestore";
 
 const Order = () => {
-  const { clearCart } = useContext(CartContext);
+  const { cart, clearCart } = useContext(CartContext);
 
   const [showMessage, setShowMessage] = useState(false);
   const [orderData, setOrderData] = useState({});
@@ -34,34 +38,68 @@ const Order = () => {
   const [error, setError] = useState(false);
   const { orderId } = useParams();
 
-  const actualizarEstadoCollections = () => {
-    const db = getFirestore();
+  const handleSubmit = () => {
+    alert("x");
+  };
 
-    // actualiza el documento
-    // TO DO: natch update
-    const updateItemCollection = doc(db, "items", "5lzDVRm80iJ6kBrFwxo4");
-    updateDoc(updateItemCollection, {
-      stock: 1100,
-    }).then(() => console.log("Actualizar"));
+  const db = getFirestore();
 
+  const agregarDatosComprador = (e, orderId) => {
+    // e.preventDefault();
+
+    //  Se actualiza el estado de la orden, el campo "finished" es TRUE
     const updateOrderCollection = doc(db, "orders", orderId);
     updateDoc(updateOrderCollection, {
+      buyer: dataForm,
       finished: true,
-    }).then(() => console.log("Actualizar"));
+    }).then(() => console.log("Orden finalizada."));
 
     setShowMessage(true);
     clearCart();
   };
 
-  useEffect(() => {
-    // console.log("current order ID: " + currentOrderID);
+  const actualizarEstadoCollections = async () => {
+    const queryCollectionStock = collection(db, "items");
 
+    // query de los items en carrito
+    const queryActualizarStock = query(
+      queryCollectionStock,
+      where(documentId(),"in", cart.map((el) => el.item.id))
+    );
+
+    console.log(queryActualizarStock);
+
+    const batch = writeBatch(db);
+
+    // obtenemos los items y actualizamos su stock
+   
+      await getDocs(queryActualizarStock)
+        .then((resp) =>
+          resp.docs.forEach((res) => {
+            batch.update(res.ref, {
+              stock:
+                res.data().stock -
+                cart.find((el) => el.item.id === res.id).quantity,
+            });
+          })
+        )
+        .catch(() => alert("Ocurrió un error al actualizar el stock."))
+        .finally(() => alert("compra realizada"));
+    
+
+    // aplicamos cambios
+    await batch.commit();
+
+    agregarDatosComprador(orderId);
+  };
+
+  useEffect(() => {
     const db = getFirestore();
     const queryOrder = doc(db, "orders", orderId);
     getDoc(queryOrder)
       .then((resp) => {
+        // si el documento no es nulo (existe en Firebase), lo seteamos en orderData
         if (resp._document !== null) {
-          //  console.log(resp);
           resp.data().finished ? setIsFinished(true) : setIsFinished(false);
           setOrderData({ id: resp.id, ...resp.data() });
         } else {
@@ -73,9 +111,6 @@ const Order = () => {
       .finally(() => {
         setLoading(false);
         console.log(orderData);
-        // setLoading(false);
-        // ((currentOrderID !== 0) && (Object.getOwnPropertyNames(setOrderData).length == 0))
-        // ? setExisting(true) : setError(true);
       });
   }, [orderId]);
 
@@ -93,15 +128,13 @@ const Order = () => {
         </Breadcrumb>
 
         <div className="pt-3 mx-5 px-5">
-          {/* bg={isFreeShipping(product.envio) ? "success" : "secondary"} */}
-
           <Alert show={showMessage} variant={!error ? "success" : "warning"}>
             <Alert.Heading>
               {!error ? "¡Genial!" : "Oh no... al parecer esta orden no existe"}
             </Alert.Heading>
             {!error ? (
               <p>
-                Tu orden fue generada. ID de la orden:{" "}
+                Tu orden fue generada. ID de la orden:
                 <Alert.Link href="#">{orderId}</Alert.Link>
               </p>
             ) : null}
@@ -124,19 +157,16 @@ const Order = () => {
             {!error ? (
               !isFinished ? (
                 <Col lg={6}>
-                  <MyForm greatTotal={20} />
-                  <Button
-                    onClick={actualizarEstadoCollections}
-                    variant="primary"
-                    type="submit"
-                    className="mt-4 mb-4 p-3 container-fluid"
-                  >
-                    Generar orden
-                  </Button>
+                  <MyForm
+                    greatTotal={orderData.total}
+                    handleSubmit={handleSubmit}
+                  />
                 </Col>
               ) : (
                 <div className="fade alert alert-primary show">
-                  <h1 >La orden <b>{orderId}</b> ya ha sido finalizada.</h1>
+                  <h1>
+                    La orden <b>{orderId}</b> ya ha sido finalizada.
+                  </h1>
                 </div>
               )
             ) : null}
