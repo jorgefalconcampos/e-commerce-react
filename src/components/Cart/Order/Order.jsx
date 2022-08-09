@@ -12,11 +12,13 @@ import Breadcrumb from "react-bootstrap/Breadcrumb";
 import MyForm from "./MyForm";
 import Alert from "react-bootstrap/Alert";
 import LoadingScreen from "../../General/LoadingScreens/SpinnerLoading";
+import Image from "react-bootstrap/Image";
+// estilos, iconos, imágenes, etc
+import delivery from "../../../static/images/ouch-illustrations/delivery.png";
 
 // context & providers
 import {
   getFirestore,
-  addDoc,
   query,
   collection,
   doc,
@@ -38,25 +40,14 @@ const Order = () => {
   const [error, setError] = useState(false);
   const { orderId } = useParams();
 
-  const handleSubmit = () => {
-    alert("x");
+  const handleSubmit = (formValues) => {
+    // updating (decreasing) stock
+    actualizarEstadoCollections();
+    // adding buyer data
+    agregarDatosComprador(formValues);
   };
 
   const db = getFirestore();
-
-  const agregarDatosComprador = (e, orderId) => {
-    // e.preventDefault();
-
-    //  Se actualiza el estado de la orden, el campo "finished" es TRUE
-    const updateOrderCollection = doc(db, "orders", orderId);
-    updateDoc(updateOrderCollection, {
-      buyer: dataForm,
-      finished: true,
-    }).then(() => console.log("Orden finalizada."));
-
-    setShowMessage(true);
-    clearCart();
-  };
 
   const actualizarEstadoCollections = async () => {
     const queryCollectionStock = collection(db, "items");
@@ -64,33 +55,47 @@ const Order = () => {
     // query de los items en carrito
     const queryActualizarStock = query(
       queryCollectionStock,
-      where(documentId(),"in", cart.map((el) => el.item.id))
+      where(
+        documentId(),
+        "in",
+        cart.map((el) => el.item.id)
+      )
     );
-
-    console.log(queryActualizarStock);
 
     const batch = writeBatch(db);
 
     // obtenemos los items y actualizamos su stock
-   
-      await getDocs(queryActualizarStock)
-        .then((resp) =>
-          resp.docs.forEach((res) => {
-            batch.update(res.ref, {
-              stock:
-                res.data().stock -
-                cart.find((el) => el.item.id === res.id).quantity,
-            });
-          })
-        )
-        .catch(() => alert("Ocurrió un error al actualizar el stock."))
-        .finally(() => alert("compra realizada"));
-    
+    await getDocs(queryActualizarStock)
+      .then((resp) =>
+        resp.docs.forEach((res) => {
+          batch.update(res.ref, {
+            stock:
+              res.data().stock -
+              cart.find((el) => el.item.id === res.id).quantity,
+          });
+        })
+      )
+      .catch(() => console.log("Ocurrió un error al actualizar el stock."))
+      .finally(() => console.log("Stock actualizado"));
 
     // aplicamos cambios
     await batch.commit();
+  };
 
-    agregarDatosComprador(orderId);
+  const agregarDatosComprador = (formValues) => {
+    //  Se actualiza el estado de la orden, el campo "finished" es TRUE
+    const updateOrderCollection = doc(db, "orders", orderId);
+    const date = new Date();
+    updateDoc(updateOrderCollection, {
+      buyer: formValues,
+      finished: true,
+      dateFinished: date.getTime(),
+    }).then(() =>
+      console.log("Orden finalizada, agregados datos del comprador")
+    );
+
+    setShowMessage(true);
+    clearCart();
   };
 
   useEffect(() => {
@@ -156,12 +161,17 @@ const Order = () => {
           <Row className="d-flex justify-content-center my-4">
             {!error ? (
               !isFinished ? (
-                <Col lg={6}>
-                  <MyForm
-                    greatTotal={orderData.total}
-                    handleSubmit={handleSubmit}
-                  />
-                </Col>
+                !showMessage ? (
+                  <Col xs={12} md={9} lg={6}>
+                    <MyForm
+                      greatTotal={orderData.total}
+                      handleSubmit={handleSubmit}
+                    />
+                  </Col>
+                ) : 
+
+                <Image src={delivery} className="mx-auto"></Image>
+
               ) : (
                 <div className="fade alert alert-primary show">
                   <h1>

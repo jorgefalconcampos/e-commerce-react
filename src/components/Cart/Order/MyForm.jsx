@@ -1,7 +1,5 @@
 // librerías/dependencias
-import { useContext, useState } from "react";
-import { Formik, Form, Field, ErrorMessage, useFormik } from "formik";
-
+import { useFormik } from "formik";
 // import { useNavigate } from "react-router-dom";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -56,8 +54,10 @@ const MyForm = ({ greatTotal, handleSubmit }) => {
       address: "",
     },
     validate,
-    onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
+    onSubmit: (values, {resetForm}) => {
+      handleSubmit(values);
+      resetForm();
+      // alert(JSON.stringify(values, null, 2));
     },
   });
 
@@ -79,6 +79,7 @@ const MyForm = ({ greatTotal, handleSubmit }) => {
                     name="first_name"
                     type="text"
                     autoComplete="given-name"
+                    aria-describedby="first_name_desc"
                     placeholder="Escribe tu(s) nombre(s)"
                     onChange={formik.handleChange}
                     value={formik.values.first_name}
@@ -87,7 +88,7 @@ const MyForm = ({ greatTotal, handleSubmit }) => {
                   {/* error message for first name */}
                   <Row className="mt-1">
                     {formik.errors.first_name ? (
-                      <div className="item-cat-detail">
+                      <div id="first_name_desc" className="item-cat-detail">
                         {formik.errors.first_name}
                       </div>
                     ) : null}
@@ -106,6 +107,7 @@ const MyForm = ({ greatTotal, handleSubmit }) => {
                     name="last_name"
                     type="text"
                     autoComplete="family-name"
+                    aria-describedby="last_name_desc"
                     placeholder="Escribe tus apellidos"
                     onChange={formik.handleChange}
                     value={formik.values.last_name}
@@ -114,7 +116,7 @@ const MyForm = ({ greatTotal, handleSubmit }) => {
                   {/* error message for last name */}
                   <Row className="mt-1">
                     {formik.errors.last_name ? (
-                      <div className="item-cat-detail">
+                      <div id="last_name_desc" className="item-cat-detail">
                         {formik.errors.last_name}
                       </div>
                     ) : null}
@@ -134,6 +136,7 @@ const MyForm = ({ greatTotal, handleSubmit }) => {
                     name="email"
                     type="email"
                     autoComplete="email"
+                    aria-describedby="email_desc"
                     placeholder="email@ejemplo.xyz"
                     onChange={formik.handleChange}
                     value={formik.values.email}
@@ -142,7 +145,7 @@ const MyForm = ({ greatTotal, handleSubmit }) => {
                   {/* error message for email */}
                   <Row className="mt-1">
                     {formik.errors.email ? (
-                      <div className="item-cat-detail">
+                      <div id="email_desc" className="item-cat-detail">
                         {formik.errors.email}
                       </div>
                     ) : null}
@@ -160,6 +163,7 @@ const MyForm = ({ greatTotal, handleSubmit }) => {
                     name="phone"
                     type="tel"
                     autoComplete="tel"
+                    aria-describedby="phone_desc"
                     placeholder="+52 01 2345 6789"
                     onChange={formik.handleChange}
                     value={formik.values.phone}
@@ -168,7 +172,7 @@ const MyForm = ({ greatTotal, handleSubmit }) => {
                   {/* error message for phone */}
                   <Row className="mt-1">
                     {formik.errors.phone ? (
-                      <div className="item-cat-detail">
+                      <div id="phone_desc" className="item-cat-detail">
                         {formik.errors.phone}
                       </div>
                     ) : null}
@@ -186,6 +190,7 @@ const MyForm = ({ greatTotal, handleSubmit }) => {
                     name="address"
                     type="text"
                     autoComplete="street-address"
+                    aria-describedby="address_desc"
                     placeholder="Plaza de la Constitución S/N, Centro, Cuauhtémoc, 06010 Ciudad de México, CDMX"
                     onChange={formik.handleChange}
                     value={formik.values.address}
@@ -194,7 +199,7 @@ const MyForm = ({ greatTotal, handleSubmit }) => {
                   {/* error message for address */}
                   <Row className="mt-1">
                     {formik.errors.address ? (
-                      <div className="item-cat-detail">
+                      <div id="address_desc" className="item-cat-detail">
                         {formik.errors.address}
                       </div>
                     ) : null}

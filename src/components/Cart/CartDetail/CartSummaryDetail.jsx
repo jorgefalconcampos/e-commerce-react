@@ -35,6 +35,8 @@ const CartSummaryDetail = () => {
 
     order.total = total;
     order.finished = false;
+    const date = new Date();
+    order.dateCreated = date.getTime();
 
     const db = getFirestore();
 
