@@ -19,9 +19,7 @@ export const CartProvider = ({ children }) => {
       item.quantity +=
         obj.quantity; /* si ya está en el carrito solo actualizamos la cantidad */
 
-      // setCartBadgeCoount(item.quantity)
     } else {
-      // setCart(obj)
       cart.push(obj);
     }
 
@@ -93,24 +91,6 @@ export const CartProvider = ({ children }) => {
       setTotal(sum+envios);
     })
   };
-
-  function queryLocalStorage(clave) {
-    if (localStorage.getItem(clave) === null) {
-      return false;
-    } else {
-      return localStorage.getItem(clave);
-    }
-  }
-
-  function saveLocalStorage(clave, valor) {
-    if (localStorage.getItem(clave) === null && clave != "cart") {
-      // no existe en localStorage, entonces lo creamos
-      localStorage.setItem(clave, 1);
-    } else {
-      // si ya existe en localStorage, lo actualizamos
-      localStorage.setItem(clave, valor);
-    }
-  }
 
   return (
     <CartContext.Provider

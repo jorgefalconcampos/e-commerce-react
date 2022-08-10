@@ -9,10 +9,8 @@ import LoadingScreen from "../General/LoadingScreens/SpinnerLoading";
 
 const ItemListContainer = () => {
   const [products, setProducts] = useState([]);
-  const [product, setProduct] = useState({});
   const [loading, setLoading] = useState(true);
   const { categoryName } = useParams();
-  // const [error, setError] = useState(false); // si hay error durante la carga
 
   useEffect(() => {
     const db = getFirestore();

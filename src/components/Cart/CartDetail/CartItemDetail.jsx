@@ -71,19 +71,8 @@ const CartItemDetail = ({ product }) => {
             <Form.Control
               className="text-center mx-1"
               readOnly
-              // plaintext
-              // defaultValue={initial}
-              // type="number"
               placeholder={product.quantity}
-              // value={count || ""}
             />
-
-            {/* <Form.Select className="mt-1" id="qtty_item_1">
-                  
-                  <option value="1">999</option>
-                  <option value="2">2</option>
-                  <option value="3">3</option>
-                </Form.Select> */}
           </Col>
           <Col xs={7} sm={7} md={7} lg={10} className="text-center text-sm-end">
             <OverlayTrigger

@@ -8,19 +8,8 @@ import InputGroup from "react-bootstrap/InputGroup";
 import Form from "react-bootstrap/Form";
 
 const ItemCount = ({ stock, initial, onAdd, productName }) => {
-  // const [value, setValue] = useState(initial);
+  
   const [count, setCount] = useState(initial);
-
-  // const onChangeValue = (e) => {
-  //   setValue(e.target.value);
-  // };
-
-  // const onBlur = (e) => {
-  //   let qtty = e.target.value;
-  //   if (qtty > stock) {
-  //     alert(`No puedes agregar ${qtty} items, el máximo es de ${stock}`);
-  //   }
-  // };
 
   const increment = () => {
     if (count < stock) {
@@ -51,20 +40,11 @@ const ItemCount = ({ stock, initial, onAdd, productName }) => {
                   -
                 </Button>
 
-                {/* <span className="px-2">
-              {count}
-            </span> */}
-
                 <Form.Control
                   className="text-center"
                   readOnly
-                  // plaintext
-                  // defaultValue={initial}
-                  // type="number"
                   placeholder={initial}
                   value={count || ""}
-                  // onBlur={onBlur}
-                  // onChange={onChangeValue}
                 />
 
                 <Button

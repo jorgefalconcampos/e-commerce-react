@@ -57,7 +57,6 @@ const MyForm = ({ greatTotal, handleSubmit }) => {
     onSubmit: (values, {resetForm}) => {
       handleSubmit(values);
       resetForm();
-      // alert(JSON.stringify(values, null, 2));
     },
   });
 
