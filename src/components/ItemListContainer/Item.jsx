@@ -77,7 +77,7 @@ const Item = ({ item }) => {
                 >
                   Quitar del carrito
                 </Button>
-              ) : (
+              ) : item.stock > 0 ? (
                 <Button
                   onClick={agregarAlCarrito}
                   variant="outline-primary"
@@ -85,6 +85,8 @@ const Item = ({ item }) => {
                 >
                   Agregar al carrito
                 </Button>
+              ) : (
+                <p className="d-inline item-cat-detail">Sin stock</p>
               )}
             </Col>
           </Row>
