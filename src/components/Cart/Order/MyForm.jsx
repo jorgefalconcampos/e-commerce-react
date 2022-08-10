@@ -37,7 +37,7 @@ const validate = (values) => {
   if (!values.address) {
     errors.address = "La dirección es requerida.";
   } else if (values.address.length < 30) {
-    errors.address = "Debe tener al menos gener0 caracteres.";
+    errors.address = "Debe tener al menos 30 caracteres.";
   }
 
   return errors;
