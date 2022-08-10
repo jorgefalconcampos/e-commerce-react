@@ -139,19 +139,10 @@ const Order = () => {
             </Alert.Heading>
             {!error ? (
               <p>
-                Tu orden fue generada. ID de la orden:
+                Tu orden fue generada. ID de la orden:&nbsp;
                 <Alert.Link href="#">{orderId}</Alert.Link>
               </p>
             ) : null}
-            <hr />
-            <div className="d-flex justify-content-end">
-              <Button
-                onClick={() => setShowMessage(false)}
-                variant="outline-success"
-              >
-                Cerrar
-              </Button>
-            </div>
           </Alert>
         </div>
 
