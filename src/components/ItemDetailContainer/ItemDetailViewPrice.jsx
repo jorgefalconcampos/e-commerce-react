@@ -20,8 +20,6 @@ const ItemDetailViewPrice = ({ product }) => {
   const [cantidad, setCantidad] = useState();
   const [addAgain, setAddAgain] = useState(false);
 
-  console.log(cart);
-
   const isFreeShipping = (shippingPrice) => {
     if (Number(shippingPrice) === 0) {
       return true;
@@ -31,7 +29,6 @@ const ItemDetailViewPrice = ({ product }) => {
   };
 
   const funcionContador = (contador) => {
-    console.log("el valor del contador es: " + contador);
     setCantidad(contador);
     const producto = { item: product, quantity: contador };
     addToCart(producto);
@@ -39,7 +36,6 @@ const ItemDetailViewPrice = ({ product }) => {
   };
 
   const quitarItemDelCarrito = () => {
-    console.log("quitarItemDelCarrito");
     setAddAgain(true);
     removeFromCart(product.id);
   };

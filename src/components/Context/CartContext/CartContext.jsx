@@ -54,7 +54,6 @@ export const CartProvider = ({ children }) => {
   };
 
   const clearCart = () => {
-    console.log("Carrito limpiado");
     /* Limpiamos el carrito pasando un array vacío a la función "setCart" */
     setCart([]);
     /* Limpiamos el número del Badge poniéndolo en 0 */
@@ -88,7 +87,6 @@ export const CartProvider = ({ children }) => {
     cart.forEach(el => {
       // price per item, including repeated
       let price_per_item = Number(el.item.precio) * Number(el.quantity);
-      console.log(price_per_item);
       sum += price_per_item;
       envios += Number(el.item.envio);
       setTotalEnvios(envios);

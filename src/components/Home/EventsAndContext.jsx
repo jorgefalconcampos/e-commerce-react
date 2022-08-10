@@ -14,10 +14,7 @@ const EventsAndContext = () => {
   const [user, setUser] = useState({});
   const [isLoading, setIsLoading] = useState(false);
 
-  // console.log(value)
-
   const onChangeValue = (e) => {
-    // console.log(e.target.value);
     setValue(e.target.value);
   };
 
@@ -32,11 +29,9 @@ const EventsAndContext = () => {
         const { data } = await axios(
           `https://api.github.com/users/${userInput}`
         );
-        console.log(data);
-        // console.log(res.data);
         setUser(data);
       } catch (err) {
-        console.log("Error " + err.message);
+        alert("Error " + err.message);
       }
     }
 

@@ -11,7 +11,6 @@ import Card from "react-bootstrap/Card";
 import Badge from "react-bootstrap/Badge";
 
 const Item = ({ item }) => {
-  console.log(item);
   const { categoryName } = useParams();
   const { addToCart, removeFromCart } = useContext(CartContext);
   const [added, setAdded] = useState(false);

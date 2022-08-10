@@ -48,8 +48,7 @@ const CartSummaryDetail = () => {
         setOrderID(resp.id);
         navigate(`/place-order/${resp.id}`);
       })
-      .catch((err) => console.log(err));
-    // .finally(() => clearCart());
+      .catch((err) => alert(err));
   };
 
   return (

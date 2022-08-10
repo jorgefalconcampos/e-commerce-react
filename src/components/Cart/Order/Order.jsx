@@ -75,8 +75,7 @@ const Order = () => {
           });
         })
       )
-      .catch(() => console.log("Ocurrió un error al actualizar el stock."))
-      .finally(() => console.log("Stock actualizado"));
+      .catch(() => alert("Ocurrió un error al actualizar el stock."))
 
     // aplicamos cambios
     await batch.commit();
@@ -90,12 +89,10 @@ const Order = () => {
       buyer: formValues,
       finished: true,
       dateFinished: date.getTime(),
-    }).then(() =>
-      console.log("Orden finalizada, agregados datos del comprador")
-    );
-
-    setShowMessage(true);
-    clearCart();
+    }).then(() => {
+      setShowMessage(true)
+      clearCart();
+    });
   };
 
   useEffect(() => {
@@ -112,14 +109,11 @@ const Order = () => {
           setError(true);
         }
       })
-      .catch((err) => console.log(err))
+      .catch((err) => alert(err))
       .finally(() => {
         setLoading(false);
-        console.log(orderData);
       });
   }, [orderId]);
-
-  console.log(orderData);
 
   return (
     <>
