@@ -12,10 +12,11 @@ import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
 import ItemCount from "./ItemCount";
 // estilos, iconos, imágenes, etc
-import { StarFill, BoxSeam, XSquareFill, CartCheckFill, Trash3Fill } from "react-bootstrap-icons";
+import { StarFill, BoxSeam, XSquareFill, CartCheckFill, Trash3Fill, ExclamationCircle } from "react-bootstrap-icons";
 
 const ItemDetailViewPrice = ({ product }) => {
-  const { cart, addToCart, removeFromCart, clearCart } = useContext(CartContext);
+  const { cart, addToCart, removeFromCart, clearCart } =
+    useContext(CartContext);
   const [cantidad, setCantidad] = useState();
   const [addAgain, setAddAgain] = useState(false);
 
@@ -38,14 +39,14 @@ const ItemDetailViewPrice = ({ product }) => {
   };
 
   const quitarItemDelCarrito = () => {
-    console.log("quitarItemDelCarrito")
+    console.log("quitarItemDelCarrito");
     setAddAgain(true);
     removeFromCart(product.id);
   };
 
   const eliminarCarrito = () => {
     setAddAgain(true);
-    clearCart()
+    clearCart();
   };
 
   return (
@@ -83,8 +84,17 @@ const ItemDetailViewPrice = ({ product }) => {
                     }
                   >
                     <div className="d-flex align-items-center">
-                      <BoxSeam color="red" />
-                      &nbsp;En stock
+                      {product.stock > 0 ? (
+                        <div>
+                          <BoxSeam color="red" />
+                          &nbsp;En stock
+                        </div>
+                      ) : (
+                        <div>
+                          <ExclamationCircle color="red" />
+                          &nbsp;Sin stock
+                        </div>
+                      )}
                     </div>
                   </OverlayTrigger>
                 </div>
@@ -134,7 +144,11 @@ const ItemDetailViewPrice = ({ product }) => {
                       <Tooltip id="remove_from_cart">
                         Tu <strong>{product.nombre}</strong> se eliminará por
                         completo de tu carrito.&nbsp;
-                        {cantidad < 2 ? null : <>(<strong>{cantidad}</strong> unidades).</>}
+                        {cantidad < 2 ? null : (
+                          <>
+                            (<strong>{cantidad}</strong> unidades).
+                          </>
+                        )}
                       </Tooltip>
                     }
                   >

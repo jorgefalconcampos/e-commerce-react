@@ -37,54 +37,60 @@ const ItemCount = ({ stock, initial, onAdd, productName }) => {
   return (
     <>
       <Row className="py-1 my-1 d-flex align-items-center">
-        <label htmlFor="qtty_input">Cantidad:</label>
-        <Col xs={5}>
-          <InputGroup className="mt-1">
-            <Button
-              onClick={decrement}
-              variant="outline-danger px-3"
-              id="qtty_minus"
-              aria-label={`Disminuir en 1 la cantidad de ${productName}`}
-            >
-              -
-            </Button>
+        {stock > 0 ? (
+          <>
+            <label htmlFor="qtty_input">Cantidad:</label>
+            <Col xs={5}>
+              <InputGroup className="mt-1">
+                <Button
+                  onClick={decrement}
+                  variant="outline-danger px-3"
+                  id="qtty_minus"
+                  aria-label={`Disminuir en 1 la cantidad de ${productName}`}
+                >
+                  -
+                </Button>
 
-            {/* <span className="px-2">
+                {/* <span className="px-2">
               {count}
             </span> */}
 
-            <Form.Control
-              className="text-center"
-              readOnly
-              // plaintext
-              // defaultValue={initial}
-              // type="number"
-              placeholder={initial}
-              value={count || ""}
-              // onBlur={onBlur}
-              // onChange={onChangeValue}
-            />
+                <Form.Control
+                  className="text-center"
+                  readOnly
+                  // plaintext
+                  // defaultValue={initial}
+                  // type="number"
+                  placeholder={initial}
+                  value={count || ""}
+                  // onBlur={onBlur}
+                  // onChange={onChangeValue}
+                />
 
-            <Button
-              onClick={increment}
-              variant="outline-success px-3"
-              id="qtty_plus"
-              aria-label={`Aumentar en 1 la cantidad de ${productName}`}
-            >
-              +
-            </Button>
-          </InputGroup>
-        </Col>
-        <Col xs={7}>
-          <Button
-            onClick={() => onAdd(count)}
-            variant="primary"
-            className="w-100 my-2"
-            aria-label={`Añadir ${count} ${productName} al carrito`}
-          >
-            Añadir al carrito
-          </Button>
-        </Col>
+                <Button
+                  onClick={increment}
+                  variant="outline-success px-3"
+                  id="qtty_plus"
+                  aria-label={`Aumentar en 1 la cantidad de ${productName}`}
+                >
+                  +
+                </Button>
+              </InputGroup>
+            </Col>
+            <Col xs={7}>
+              <Button
+                onClick={() => onAdd(count)}
+                variant="primary"
+                className="w-100 my-2"
+                aria-label={`Añadir ${count} ${productName} al carrito`}
+              >
+                Añadir al carrito
+              </Button>
+            </Col>
+          </>
+        ) : (
+          <p className="item-cat-detail">No hay stock disponible en este momento.</p>
+        )}
       </Row>
     </>
   );

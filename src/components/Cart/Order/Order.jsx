@@ -161,17 +161,16 @@ const Order = () => {
           <Row className="d-flex justify-content-center my-4">
             {!error ? (
               !isFinished ? (
-                !showMessage ? (
-                  <Col xs={12} md={9} lg={6}>
+                <Col xs={12} md={9} lg={6}>
+                  {!showMessage ? (
                     <MyForm
                       greatTotal={orderData.total}
                       handleSubmit={handleSubmit}
                     />
-                  </Col>
-                ) : 
-
-                <Image src={delivery} className="mx-auto"></Image>
-
+                  ) : (
+                    <Image src={delivery} className="mx-auto"></Image>
+                  )}
+                </Col>
               ) : (
                 <div className="fade alert alert-primary show">
                   <h1>
